@@ -1,0 +1,46 @@
+from flask import Flask, jsonify
+from flask_cors import CORS
+
+from config import client
+from routes.crop_routes import crop_bp
+
+app = Flask(__name__)
+CORS(app)
+
+app.register_blueprint(crop_bp)
+
+
+@app.route("/")
+def home():
+    return jsonify({
+        "message": "Agriculture AI server is running"
+    })
+
+
+@app.route("/api/health")
+def health():
+    return jsonify({
+        "success": True,
+        "message": "Server is healthy"
+    })
+
+
+@app.route("/api/database-status")
+def database_status():
+    try:
+        client.admin.command("ping")
+
+        return jsonify({
+            "success": True,
+            "message": "MongoDB connected successfully"
+        })
+
+    except Exception:
+        return jsonify({
+            "success": False,
+            "message": "MongoDB is not running"
+        }), 503
+
+
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=5000, debug=True)

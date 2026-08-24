@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agriculture AI | Crop Recommendation</title>
+  <link rel="stylesheet" href="../css/crop-recommendation.css" />
+</head>
+<body>
+  <main class="page-container">
+    <section class="hero">
+      <p class="eyebrow">SMART FARMING TOOL</p>
+      <h1>Find the right crop for your farm</h1>
+      <p>Select your soil type and season. Agriculture AI will suggest suitable crops.</p>
+    </section>
+
+    <section class="recommendation-grid">
+      <form id="cropForm" class="form-card">
+        <div class="card-heading">
+          <span class="icon">🌱</span>
+          <div>
+            <h2>Farm details</h2>
+            <p>Enter simple information about your field.</p>
+          </div>
+        </div>
+
+        <label for="soilType">Soil type</label>
+        <select id="soilType" required>
+          <option value="">Select soil type</option>
+          <option value="Black">Black soil</option>
+          <option value="Alluvial">Alluvial soil</option>
+          <option value="Red">Red soil</option>
+          <option value="Loamy">Loamy soil</option>
+          <option value="Sandy">Sandy soil</option>
+          <option value="Clay">Clay soil</option>
+        </select>
+
+        <label for="season">Season</label>
+        <select id="season" required>
+          <option value="">Select season</option>
+          <option value="Kharif">Kharif (Monsoon)</option>
+          <option value="Rabi">Rabi (Winter)</option>
+          <option value="Summer">Summer</option>
+        </select>
+
+        <button id="recommendButton" type="submit">
+          Get crop recommendation
+        </button>
+
+        <p id="formMessage" class="form-message"></p>
+      </form>
+
+      <section id="resultCard" class="result-card">
+        <div class="result-empty" id="emptyState">
+          <span>🧑‍🌾</span>
+          <h2>Your recommendation will appear here</h2>
+          <p>Fill in your farm details to get crop suggestions.</p>
+        </div>
+
+        <div id="resultContent" class="result-content hidden">
+          <p class="eyebrow">RECOMMENDED FOR YOU</p>
+          <h2>Best crops for your field</h2>
+          <div id="cropList" class="crop-list"></div>
+
+          <div class="reason-box">
+            <strong>Why these crops?</strong>
+            <p id="reasonText"></p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../js/crop.js"></script>
+</body>
+</html>
