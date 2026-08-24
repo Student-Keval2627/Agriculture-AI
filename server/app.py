@@ -4,12 +4,14 @@ from flask_cors import CORS
 from config import client
 from routes.crop_routes import crop_bp
 from routes.disease_routes import disease_bp
+from routes.fertilizer_routes import fertilizer_bp
 
 app = Flask(__name__)
 CORS(app)
 
 app.register_blueprint(crop_bp)
 app.register_blueprint(disease_bp)
+app.register_blueprint(fertilizer_bp)
 
 
 @app.route("/")
@@ -36,7 +38,6 @@ def database_status():
             "success": True,
             "message": "MongoDB connected successfully"
         })
-
     except Exception:
         return jsonify({
             "success": False,
