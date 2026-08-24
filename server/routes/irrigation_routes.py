@@ -41,3 +41,17 @@ def irrigation_advice():
         "message": "Irrigation advice generated successfully",
         "data": history_data
     })
+
+
+@irrigation_bp.route("/api/irrigation/history", methods=["GET"])
+def irrigation_history():
+    history = list(
+        db.irrigation_history.find({}, {"_id": 0})
+        .sort("createdAt", -1)
+        .limit(10)
+    )
+
+    return jsonify({
+        "success": True,
+        "data": history
+    })
