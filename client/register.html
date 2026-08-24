@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account | Agriculture AI</title>
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card">
+      <div class="brand">🌿 <span>Agriculture AI</span></div>
+
+      <p class="eyebrow">START SMART FARMING</p>
+      <h1>Create your farmer account</h1>
+      <p class="subtitle">Save your crop guidance and access your dashboard.</p>
+
+      <form id="registerForm">
+        <label for="name">Your name</label>
+        <input id="name" type="text" placeholder="Enter your name" required />
+
+        <label for="email">Email address</label>
+        <input id="email" type="email" placeholder="Enter your email" required />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Minimum 6 characters" required />
+
+        <button id="registerButton" type="submit">Create account</button>
+        <p id="formMessage" class="form-message"></p>
+      </form>
+
+      <p class="switch-text">
+        Already have an account? <a href="login.html">Login</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

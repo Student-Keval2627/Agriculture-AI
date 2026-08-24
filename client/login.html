@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Agriculture AI</title>
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card">
+      <div class="brand">🌿 <span>Agriculture AI</span></div>
+
+      <p class="eyebrow">WELCOME BACK</p>
+      <h1>Login to your farm dashboard</h1>
+      <p class="subtitle">Access your crop plans and smart farming guidance.</p>
+
+      <form id="loginForm">
+        <label for="email">Email address</label>
+        <input id="email" type="email" placeholder="Enter your email" required />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter your password" required />
+
+        <button id="loginButton" type="submit">Login</button>
+        <p id="formMessage" class="form-message"></p>
+      </form>
+
+      <p class="switch-text">
+        New farmer? <a href="register.html">Create an account</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
