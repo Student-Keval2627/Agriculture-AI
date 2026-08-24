@@ -5,6 +5,7 @@ from config import client
 from routes.crop_routes import crop_bp
 from routes.disease_routes import disease_bp
 from routes.fertilizer_routes import fertilizer_bp
+from routes.irrigation_routes import irrigation_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -12,6 +13,7 @@ CORS(app)
 app.register_blueprint(crop_bp)
 app.register_blueprint(disease_bp)
 app.register_blueprint(fertilizer_bp)
+app.register_blueprint(irrigation_bp)
 
 
 @app.route("/")

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agriculture AI | Irrigation Advisor</title>
+  <link rel="stylesheet" href="../css/irrigation-advisor.css" />
+</head>
+<body>
+  <main class="page-container">
+    <a class="back-link" href="../index.html">← Back to Dashboard</a>
+
+    <section class="hero">
+      <p class="eyebrow">SMART FARMING TOOL</p>
+      <h1>Make better irrigation decisions</h1>
+      <p>Choose crop, soil type, and field moisture to receive water-management guidance.</p>
+    </section>
+
+    <section class="content-grid">
+      <form id="irrigationForm" class="form-card">
+        <div class="card-heading">
+          <span>💧</span>
+          <div>
+            <h2>Field moisture check</h2>
+            <p>Enter the current condition of your field.</p>
+          </div>
+        </div>
+
+        <label for="crop">Crop name</label>
+        <select id="crop" required>
+          <option value="">Select crop</option>
+          <option value="Tomato">Tomato</option>
+          <option value="Cotton">Cotton</option>
+          <option value="Potato">Potato</option>
+          <option value="Wheat">Wheat</option>
+          <option value="Rice">Rice</option>
+        </select>
+
+        <label for="soilType">Soil type</label>
+        <select id="soilType" required>
+          <option value="">Select soil type</option>
+          <option value="Black">Black soil</option>
+          <option value="Alluvial">Alluvial soil</option>
+          <option value="Red">Red soil</option>
+          <option value="Loamy">Loamy soil</option>
+        </select>
+
+        <label for="moistureLevel">Current soil moisture</label>
+        <select id="moistureLevel" required>
+          <option value="">Select moisture level</option>
+          <option value="Dry">Dry</option>
+          <option value="Normal">Normal</option>
+          <option value="Wet">Wet</option>
+        </select>
+
+        <button id="adviceButton" type="submit">Get irrigation advice</button>
+        <p id="formMessage" class="form-message"></p>
+      </form>
+
+      <section class="result-card">
+        <div id="emptyState" class="empty-state">
+          <span>💦</span>
+          <h2>Your irrigation advice will appear here</h2>
+          <p>Fill in the field details to check water needs.</p>
+        </div>
+
+        <div id="resultContent" class="result-content hidden">
+          <p class="eyebrow">IRRIGATION GUIDANCE</p>
+
+          <div class="title-row">
+            <h2 id="statusTitle"></h2>
+            <span id="priorityBadge" class="priority-badge"></span>
+          </div>
+
+          <p id="descriptionText" class="description"></p>
+
+          <div class="tips-box">
+            <h3>Helpful next steps</h3>
+            <ul id="tipsList"></ul>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../js/irrigation.js"></script>
+</body>
+</html>
