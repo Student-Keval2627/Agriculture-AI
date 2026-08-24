@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agriculture AI | Disease Advisor</title>
+  <link rel="stylesheet" href="../css/disease-detection.css" />
+</head>
+<body>
+  <main class="page-container">
+    <a class="back-link" href="../index.html">← Back to Dashboard</a>
+
+    <section class="hero">
+      <p class="eyebrow">SMART FARMING TOOL</p>
+      <h1>Check possible crop problems</h1>
+      <p>Select the crop and visible symptom to receive safe first-step guidance.</p>
+    </section>
+
+    <section class="content-grid">
+      <form id="diseaseForm" class="form-card">
+        <div class="card-heading">
+          <span>🔎</span>
+          <div>
+            <h2>Crop symptoms</h2>
+            <p>Choose what you can see in your field.</p>
+          </div>
+        </div>
+
+        <label for="crop">Crop name</label>
+        <select id="crop" required>
+          <option value="">Select crop</option>
+          <option value="Tomato">Tomato</option>
+          <option value="Cotton">Cotton</option>
+          <option value="Potato">Potato</option>
+          <option value="Wheat">Wheat</option>
+          <option value="Rice">Rice</option>
+        </select>
+
+        <label for="symptom">Visible symptom</label>
+        <select id="symptom" required>
+          <option value="">Select symptom</option>
+          <option value="Brown Spots">Brown spots on leaves</option>
+          <option value="White Powder">White powder on leaves</option>
+          <option value="Leaf Curl">Leaves are curling</option>
+          <option value="Yellow Leaves">Leaves are turning yellow</option>
+          <option value="Wilting">Plant is wilting</option>
+        </select>
+
+        <button id="checkButton" type="submit">Check crop condition</button>
+        <p id="formMessage" class="form-message"></p>
+
+        <p class="safety-note">
+          This is general guidance. For treatment or pesticide use, consult a local agriculture officer.
+        </p>
+      </form>
+
+      <section class="result-card">
+        <div id="emptyState" class="empty-state">
+          <span>🧑‍🌾</span>
+          <h2>Your result will appear here</h2>
+          <p>Select crop details to receive field guidance.</p>
+        </div>
+
+        <div id="resultContent" class="result-content hidden">
+          <p class="eyebrow">FIELD ADVICE</p>
+          <div class="result-title-row">
+            <h2 id="diseaseName"></h2>
+            <span id="riskBadge" class="risk-badge"></span>
+          </div>
+
+          <p id="descriptionText" class="description"></p>
+
+          <div class="advice-box">
+            <h3>Recommended next steps</h3>
+            <ul id="adviceList"></ul>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../js/disease.js"></script>
+</body>
+</html>

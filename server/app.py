@@ -3,11 +3,13 @@ from flask_cors import CORS
 
 from config import client
 from routes.crop_routes import crop_bp
+from routes.disease_routes import disease_bp
 
 app = Flask(__name__)
 CORS(app)
 
 app.register_blueprint(crop_bp)
+app.register_blueprint(disease_bp)
 
 
 @app.route("/")
