@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agriculture AI | Farmer Dashboard</title>
+
   <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+
 <body>
   <div class="app-layout">
     <aside class="sidebar">
@@ -21,10 +24,13 @@
         <a class="nav-link" href="pages/fertilizer-advisor.html">🧪 Fertilizer Advisor</a>
         <a class="nav-link" href="pages/irrigation-advisor.html">💧 Irrigation Advisor</a>
         <a class="nav-link" href="pages/farm-history.html">◷ Farm History</a>
+
+        <!-- My Farm now has the same sidebar style -->
+        <a class="nav-link" href="pages/my-farm.html">🚜 My Farm</a>
+
         <a class="nav-link" href="pages/disease-detection.html">⌕ Disease Advisor</a>
         <span class="nav-link disabled">☀ Weather · Soon</span>
         <span class="nav-link disabled">₹ Market Prices · Soon</span>
-        
       </nav>
 
       <div class="sidebar-help">
@@ -42,7 +48,8 @@
           <p class="eyebrow">FARMER DASHBOARD</p>
           <h1>Welcome back, Farmer</h1>
         </div>
-        <a class="profile-chip" href="#history">My Farm 🌾</a>
+
+        <a class="profile-chip" href="pages/my-farm.html">My Farm 🌾</a>
       </header>
 
       <section class="hero-card">
@@ -50,11 +57,16 @@
           <p class="eyebrow light">AGRICULTURE AI ASSISTANT</p>
           <h2>Plan your next crop with confidence.</h2>
           <p>Get crop suggestions based on your soil type and farming season.</p>
+
           <a class="primary-button" href="pages/crop-recommendation.html">
             Get crop recommendation →
           </a>
-          <a class="nav-link" href="pages/fertilizer-advisor.html">🧪 Fertilizer Advisor</a>
+
+          <a class="nav-link" href="pages/fertilizer-advisor.html">
+            🧪 Fertilizer Advisor
+          </a>
         </div>
+
         <div class="hero-icon">🌱</div>
       </section>
 
@@ -91,6 +103,7 @@
               <p class="eyebrow">LATEST RESULT</p>
               <h2>Your crop recommendation</h2>
             </div>
+
             <a href="pages/crop-recommendation.html">New recommendation</a>
           </div>
 
@@ -138,6 +151,7 @@
             <p class="eyebrow">MONGODB DATA</p>
             <h2>Recent crop recommendations</h2>
           </div>
+
           <button id="refreshButton" type="button">↻ Refresh</button>
         </div>
 
@@ -149,7 +163,5 @@
   </div>
 
   <script src="js/dashboard.js"></script>
-  <script src="/js/app-controls.js"></script>
-</head>
 </body>
 </html>

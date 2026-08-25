@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Farm | Agriculture AI</title>
+
+  <link rel="stylesheet" href="/css/fertilizer-advisor.css" />
+  <link rel="stylesheet" href="/css/my-farm.css" />
+</head>
+
+<body>
+  <main class="page-container">
+    <a class="back-link" href="/">← Back to Dashboard</a>
+
+    <section class="hero">
+      <p class="eyebrow">MY FARM PROFILE</p>
+      <h1>Keep your farm details in one place</h1>
+      <p>
+        Save your field information once. Agriculture AI can use it for better
+        crop guidance later.
+      </p>
+    </section>
+
+    <section class="content-grid">
+      <form id="farmProfileForm" class="form-card">
+        <div class="card-heading">
+          <span>🌾</span>
+          <div>
+            <h2>Farm details</h2>
+            <p>Add the basic information about your farm.</p>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="farmName">Farm name</label>
+          <input
+            id="farmName"
+            type="text"
+            placeholder="Example: Green Valley Farm"
+            required
+          />
+        </div>
+
+        <div class="field-group">
+          <label for="location">Village / city</label>
+          <input
+            id="location"
+            type="text"
+            placeholder="Example: Anand, Gujarat"
+            required
+          />
+        </div>
+
+        <div class="field-group">
+          <label for="farmArea">Farm area (acres)</label>
+          <input
+            id="farmArea"
+            type="number"
+            min="0.1"
+            step="0.1"
+            placeholder="Example: 3"
+            required
+          />
+        </div>
+
+        <div class="field-group">
+          <label for="soilType">Main soil type</label>
+          <select id="soilType" required>
+            <option value="">Select soil type</option>
+            <option value="Black">Black soil</option>
+            <option value="Alluvial">Alluvial soil</option>
+            <option value="Red">Red soil</option>
+            <option value="Loamy">Loamy soil</option>
+            <option value="Sandy">Sandy soil</option>
+            <option value="Clay">Clay soil</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="mainCrop">Main crop</label>
+          <select id="mainCrop" required>
+            <option value="">Select main crop</option>
+            <option value="Cotton">Cotton</option>
+            <option value="Groundnut">Groundnut</option>
+            <option value="Maize">Maize</option>
+            <option value="Potato">Potato</option>
+            <option value="Rice">Rice</option>
+            <option value="Soybean">Soybean</option>
+            <option value="Tomato">Tomato</option>
+            <option value="Wheat">Wheat</option>
+          </select>
+        </div>
+
+        <button id="saveFarmButton" type="submit">Save farm profile</button>
+        <p id="formMessage" class="save-message"></p>
+      </form>
+
+      <section id="farmPreviewCard" class="result-card">
+        <div id="farmEmptyState" class="empty-state">
+          <span>🚜</span>
+          <h2>Your saved farm will appear here</h2>
+          <p>Fill in your farm details to create your profile.</p>
+        </div>
+
+        <div id="farmProfileContent" class="farm-profile-content hidden">
+          <p class="eyebrow">SAVED FARM PROFILE</p>
+          <h2 id="profileFarmName"></h2>
+          <p id="profileLocation" class="profile-location"></p>
+
+          <div class="profile-grid">
+            <div class="profile-item">
+              <span>Farm area</span>
+              <strong id="profileFarmArea"></strong>
+            </div>
+
+            <div class="profile-item">
+              <span>Soil type</span>
+              <strong id="profileSoilType"></strong>
+            </div>
+
+            <div class="profile-item profile-item-wide">
+              <span>Main crop</span>
+              <strong id="profileMainCrop"></strong>
+            </div>
+          </div>
+
+          <p class="profile-note">
+            Your farm profile is stored securely with your account.
+          </p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/js/my-farm.js"></script>
+</body>
+</html>

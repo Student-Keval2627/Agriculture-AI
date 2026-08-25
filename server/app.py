@@ -4,7 +4,7 @@ from datetime import timedelta
 
 from flask import Flask, jsonify, redirect, request, send_from_directory, session
 from flask_cors import CORS
-
+from routes.farm_routes import farm_bp
 from config import SECRET_KEY, client
 from routes.auth_routes import auth_bp
 from routes.crop_routes import crop_bp
@@ -33,6 +33,7 @@ app.register_blueprint(crop_bp)
 app.register_blueprint(disease_bp)
 app.register_blueprint(fertilizer_bp)
 app.register_blueprint(irrigation_bp)
+app.register_blueprint(farm_bp)
 
 
 @app.before_request
