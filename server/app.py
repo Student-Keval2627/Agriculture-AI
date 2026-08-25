@@ -1,7 +1,7 @@
 import json
 import os
 from datetime import timedelta
-
+from routes.weather_routes import weather_bp
 from flask import Flask, jsonify, redirect, request, send_from_directory, session
 from flask_cors import CORS
 from routes.farm_routes import farm_bp
@@ -27,13 +27,14 @@ app.config["SECRET_KEY"] = SECRET_KEY
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=7)
 
 CORS(app, supports_credentials=True)
-
+app.register_blueprint(weather_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(crop_bp)
 app.register_blueprint(disease_bp)
 app.register_blueprint(fertilizer_bp)
 app.register_blueprint(irrigation_bp)
 app.register_blueprint(farm_bp)
+
 
 
 @app.before_request

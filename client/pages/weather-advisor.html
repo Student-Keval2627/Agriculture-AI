@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Field Advisor | Agriculture AI</title>
+
+  <link rel="stylesheet" href="/css/fertilizer-advisor.css" />
+  <link rel="stylesheet" href="/css/weather-advisor.css" />
+</head>
+
+<body>
+  <main class="page-container">
+    <a class="back-link" href="/">← Back to Dashboard</a>
+
+    <section class="hero">
+      <p class="eyebrow">WEATHER FIELD ADVISOR</p>
+      <h1>Plan your field work for today</h1>
+      <p>
+        Select the weather conditions you see near your farm to receive
+        practical field guidance.
+      </p>
+    </section>
+
+    <section class="content-grid">
+      <form id="weatherForm" class="form-card">
+        <div class="card-heading">
+          <span>🌤️</span>
+          <div>
+            <h2>Current field weather</h2>
+            <p>Choose simple conditions from your area.</p>
+          </div>
+        </div>
+
+        <label for="weather">Current weather</label>
+        <select id="weather" required>
+          <option value="">Select current weather</option>
+          <option value="Sunny">Sunny</option>
+          <option value="Cloudy">Cloudy</option>
+          <option value="Rainy">Rainy</option>
+          <option value="Windy">Windy</option>
+        </select>
+
+        <label for="rainExpected">Rain expected soon?</label>
+        <select id="rainExpected" required>
+          <option value="">Select an option</option>
+          <option value="Yes">Yes, rain is expected</option>
+          <option value="No">No, rain is not expected</option>
+        </select>
+
+        <button id="weatherButton" type="submit">Get weather guidance</button>
+        <p id="formMessage" class="form-message"></p>
+      </form>
+
+      <section id="weatherResultCard" class="result-card">
+        <div id="emptyState" class="empty-state">
+          <span>☀</span>
+          <h2>Your weather guidance will appear here</h2>
+          <p>Select the local conditions to get farm-care advice.</p>
+        </div>
+
+        <div id="resultContent" class="weather-result-content hidden">
+          <p class="eyebrow">FIELD WEATHER GUIDANCE</p>
+
+          <div class="title-row">
+            <h2 id="adviceTitle"></h2>
+            <span id="priorityBadge" class="priority-badge"></span>
+          </div>
+
+          <div class="advice-box">
+            <h3>Recommended actions</h3>
+            <ul id="adviceList"></ul>
+          </div>
+
+          <p class="weather-note">
+            This is general guidance based on the weather conditions you selected.
+          </p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/js/weather-advisor.js"></script>
+</body>
+</html>
