@@ -1,0 +1,89 @@
+/* Crop page uses fertilizer-advisor.css for the main layout.
+   This file styles only the crop recommendation result. */
+
+.hidden {
+  display: none !important;
+}
+
+#resultCard.has-result {
+  display: block;
+  padding: 34px;
+}
+
+#resultCard.has-result .result-content {
+  width: 100%;
+}
+
+#resultCard .result-content .eyebrow {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 7px 10px;
+  color: #117332;
+  background: #e9f7ec;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+#resultCard .result-content h2 {
+  margin: 0;
+  color: #092e18;
+  font-size: 26px;
+}
+
+#resultCard .crop-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 26px;
+}
+
+#resultCard .crop-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: #0b5d2c;
+  background: #e8f6ea;
+  border: 1px solid #cce8d1;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+#resultCard .reason-box {
+  padding: 18px;
+  background: #f4faf5;
+  border: 1px solid #d9eadc;
+  border-radius: 14px;
+}
+
+#resultCard .reason-box h3 {
+  margin: 0 0 8px;
+  color: #0c4e26;
+  font-size: 16px;
+}
+
+#resultCard .reason-box p {
+  margin: 0;
+  color: #52685a;
+  line-height: 1.7;
+}
+
+.form-message {
+  min-height: 20px;
+  margin: 4px 0 0;
+  color: #b42318;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  #resultCard.has-result {
+    padding: 24px;
+  }
+
+  #resultCard .result-content h2 {
+    font-size: 23px;
+  }
+}

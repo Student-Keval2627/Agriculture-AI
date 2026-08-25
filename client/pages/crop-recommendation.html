@@ -4,20 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agriculture AI | Crop Recommendation</title>
+
+  <!-- Same main interface CSS as Fertilizer Advisor -->
+  <link rel="stylesheet" href="../css/fertilizer-advisor.css" />
+
+  <!-- Crop-only result styles -->
   <link rel="stylesheet" href="../css/crop-recommendation.css" />
 </head>
+
 <body>
   <main class="page-container">
+    <a class="back-link" href="../index.html">← Back to Dashboard</a>
+
     <section class="hero">
       <p class="eyebrow">SMART FARMING TOOL</p>
       <h1>Find the right crop for your farm</h1>
-      <p>Select your soil type and season. Agriculture AI will suggest suitable crops.</p>
+      <p>
+        Select your soil type and season. Agriculture AI will suggest suitable crops.
+      </p>
     </section>
 
-    <section class="recommendation-grid">
+    <section class="content-grid">
       <form id="cropForm" class="form-card">
         <div class="card-heading">
-          <span class="icon">🌱</span>
+          <span>🌱</span>
           <div>
             <h2>Farm details</h2>
             <p>Enter simple information about your field.</p>
@@ -51,7 +61,7 @@
       </form>
 
       <section id="resultCard" class="result-card">
-        <div class="result-empty" id="emptyState">
+        <div id="emptyState" class="empty-state">
           <span>🧑‍🌾</span>
           <h2>Your recommendation will appear here</h2>
           <p>Fill in your farm details to get crop suggestions.</p>
@@ -60,10 +70,11 @@
         <div id="resultContent" class="result-content hidden">
           <p class="eyebrow">RECOMMENDED FOR YOU</p>
           <h2>Best crops for your field</h2>
+
           <div id="cropList" class="crop-list"></div>
 
           <div class="reason-box">
-            <strong>Why these crops?</strong>
+            <h3>Why these crops?</h3>
             <p id="reasonText"></p>
           </div>
         </div>
@@ -71,7 +82,6 @@
     </section>
   </main>
 
-  <script src="../js/crop.js"></script>
-  <script src="/js/app-controls.js"></script>
+  <script src="/js/crop.js"></script>
 </body>
 </html>
