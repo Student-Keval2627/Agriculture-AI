@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agriculture AI | Farmer Dashboard</title>
-
   <link rel="stylesheet" href="css/dashboard.css" />
 </head>
 
 <body>
+
   <div class="app-layout">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
     <aside class="sidebar">
+
       <a class="brand" href="index.html">
         <span class="brand-icon">🌿</span>
         <span>Agriculture AI</span>
@@ -19,149 +25,352 @@
       <p class="menu-label">MENU</p>
 
       <nav class="nav-links">
-        <a class="nav-link active" href="index.html">⌂ Dashboard</a>
-        <a class="nav-link" href="pages/crop-recommendation.html">🌱 Crop Recommendation</a>
-        <a class="nav-link" href="pages/fertilizer-advisor.html">🧪 Fertilizer Advisor</a>
-        <a class="nav-link" href="pages/irrigation-advisor.html">💧 Irrigation Advisor</a>
-        <a class="nav-link" href="pages/farm-history.html">◷ Farm History</a>
 
-        <!-- My Farm now has the same sidebar style -->
-        <a class="nav-link" href="pages/my-farm.html">🚜 My Farm</a>
+        <a class="nav-link active" href="index.html">
+          ⌂ Dashboard
+        </a>
 
-        <a class="nav-link" href="pages/disease-detection.html">⌕ Disease Advisor</a>
-        <a class="nav-link" href="pages/weather-advisor.html">☀ Weather Advisor</a>  
-        <span class="nav-link disabled">₹ Market Prices · Soon</span>
+        <a class="nav-link" href="pages/crop-recommendation.html">
+          🌱 Crop Recommendation
+        </a>
+
+        <a class="nav-link" href="pages/fertilizer-advisor.html">
+          🧪 Fertilizer Advisor
+        </a>
+
+        <a class="nav-link" href="pages/irrigation-advisor.html">
+          💧 Irrigation Advisor
+        </a>
+
+        <a class="nav-link" href="pages/farm-history.html">
+          ◷ Farm History
+        </a>
+
+        <a class="nav-link" href="pages/my-farm.html">
+          🚜 My Farm
+        </a>
+
+        <a class="nav-link" href="pages/disease-detection.html">
+          🔎 Disease Advisor
+        </a>
+
+        <a class="nav-link" href="pages/weather-advisor.html">
+          ☀ Weather Advisor
+        </a>
+
+        <span class="nav-link disabled">
+          ₹ Market Prices · Soon
+        </span>
+
       </nav>
 
       <div class="sidebar-help">
+
         <span>🧑‍🌾</span>
+
         <div>
           <strong>Smart farming</strong>
           <p>Simple tools for better crop decisions.</p>
         </div>
+
       </div>
+
     </aside>
 
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
     <main class="main-content">
+
+      <!-- TOP BAR -->
       <header class="topbar">
+
         <div>
           <p class="eyebrow">FARMER DASHBOARD</p>
           <h1>Welcome back, Farmer</h1>
         </div>
 
-        <a class="profile-chip" href="pages/my-farm.html">My Farm 🌾</a>
+        <a class="profile-chip" href="pages/my-farm.html">
+          My Farm 🌾
+        </a>
+
       </header>
 
-      <section class="hero-card">
-        <div class="hero-content">
-          <p class="eyebrow light">AGRICULTURE AI ASSISTANT</p>
-          <h2>Plan your next crop with confidence.</h2>
-          <p>Get crop suggestions based on your soil type and farming season.</p>
 
-          <a class="primary-button" href="pages/crop-recommendation.html">
+      <!-- =========================
+           HERO SECTION
+      ========================== -->
+      <section class="hero-card">
+
+        <div class="hero-content">
+
+          <p class="eyebrow light">
+            AGRICULTURE AI ASSISTANT
+          </p>
+
+          <h2>
+            Plan your next crop with confidence.
+          </h2>
+
+          <p>
+            Get crop suggestions based on your soil type
+            and farming season.
+          </p>
+
+          <a
+            class="primary-button"
+            href="pages/crop-recommendation.html"
+          >
             Get crop recommendation →
           </a>
 
-          <a class="nav-link" href="pages/fertilizer-advisor.html">
-            🧪 Fertilizer Advisor
-          </a>
         </div>
 
-        <div class="hero-icon">🌱</div>
+        <div class="hero-icon">
+          🌱
+        </div>
+
       </section>
 
+
+      <!-- =========================
+           DASHBOARD STATS
+      ========================== -->
       <section class="stat-grid">
+
         <article class="stat-card">
-          <span class="stat-icon green">🌾</span>
+
+          <span class="stat-icon green">
+            🌾
+          </span>
+
           <div>
             <p>Saved Recommendations</p>
             <h3 id="historyCount">0</h3>
           </div>
+
         </article>
 
+
         <article class="stat-card">
-          <span class="stat-icon yellow">🌱</span>
+
+          <span class="stat-icon yellow">
+            🌱
+          </span>
+
           <div>
             <p>Latest Suggested Crop</p>
             <h3 id="latestCrop">Loading...</h3>
           </div>
+
         </article>
 
+
         <article class="stat-card">
-          <span class="stat-icon blue">◷</span>
+
+          <span class="stat-icon blue">
+            ◷
+          </span>
+
           <div>
             <p>Last Updated</p>
             <h3 id="latestDate">Loading...</h3>
           </div>
+
         </article>
+
       </section>
 
+
+      <!-- =========================
+           DASHBOARD CONTENT
+      ========================== -->
       <section class="dashboard-grid">
+
+
+        <!-- LATEST RESULT -->
         <article class="panel latest-panel">
+
           <div class="panel-heading">
+
             <div>
-              <p class="eyebrow">LATEST RESULT</p>
-              <h2>Your crop recommendation</h2>
+
+              <p class="eyebrow">
+                LATEST RESULT
+              </p>
+
+              <h2>
+                Your crop recommendation
+              </h2>
+
             </div>
 
-            <a href="pages/crop-recommendation.html">New recommendation</a>
+            <a href="pages/crop-recommendation.html">
+              New recommendation
+            </a>
+
           </div>
 
-          <div id="latestContent" class="latest-content">
-            <p class="loading-text">Loading your latest farm data...</p>
+
+          <div
+            id="latestContent"
+            class="latest-content"
+          >
+
+            <p class="loading-text">
+              Loading your latest farm data...
+            </p>
+
           </div>
+
         </article>
 
-        <article class="panel quick-panel">
-          <p class="eyebrow">QUICK ACTIONS</p>
-          <h2>What would you like to do?</h2>
 
-          <a class="quick-action" href="pages/crop-recommendation.html">
+        <!-- =========================
+             QUICK ACTIONS
+        ========================== -->
+        <article class="panel quick-panel">
+
+          <p class="eyebrow">
+            QUICK ACTIONS
+          </p>
+
+          <h2>
+            What would you like to do?
+          </h2>
+
+
+          <!-- CROP RECOMMENDATION -->
+          <a
+            class="quick-action"
+            href="pages/crop-recommendation.html"
+          >
+
             <span>🌱</span>
+
             <div>
-              <strong>Recommend a crop</strong>
-              <p>Choose a crop using soil and season.</p>
+
+              <strong>
+                Recommend a crop
+              </strong>
+
+              <p>
+                Choose a crop using soil and season.
+              </p>
+
             </div>
+
             <b>→</b>
+
           </a>
 
-          <div class="quick-action muted">
-            <span>☀</span>
-            <div>
-              <strong>Check weather</strong>
-              <p>Coming in the next feature.</p>
-            </div>
-            <b>Soon</b>
-          </div>
 
-          <div class="quick-action muted">
+          <!-- WEATHER ADVISOR -->
+          <a
+            class="quick-action"
+            href="pages/weather-advisor.html"
+          >
+
+            <span>☀️</span>
+
+            <div>
+
+              <strong>
+                Check weather
+              </strong>
+
+              <p>
+                Get weather-based farming advice.
+              </p>
+
+            </div>
+
+            <b>→</b>
+
+          </a>
+
+
+          <!-- DISEASE ADVISOR -->
+          <a
+            class="quick-action"
+            href="pages/disease-detection.html"
+          >
+
             <span>🔎</span>
+
             <div>
-              <strong>Detect crop disease</strong>
-              <p>Coming in the next feature.</p>
+
+              <strong>
+                Detect crop disease
+              </strong>
+
+              <p>
+                Check crop health and disease symptoms.
+              </p>
+
             </div>
-            <b>Soon</b>
-          </div>
+
+            <b>→</b>
+
+          </a>
+
         </article>
+
       </section>
 
-      <section id="history" class="panel history-panel">
+
+      <!-- =========================
+           RECENT HISTORY
+      ========================== -->
+      <section
+        id="history"
+        class="panel history-panel"
+      >
+
         <div class="panel-heading">
+
           <div>
-            <p class="eyebrow">MONGODB DATA</p>
-            <h2>Recent crop recommendations</h2>
+
+            <p class="eyebrow">
+              MONGODB DATA
+            </p>
+
+            <h2>
+              Recent crop recommendations
+            </h2>
+
           </div>
 
-          <button id="refreshButton" type="button">↻ Refresh</button>
+          <button
+            id="refreshButton"
+            type="button"
+          >
+            ↻ Refresh
+          </button>
+
         </div>
 
-        <div id="historyList" class="history-list">
-          <p class="loading-text">Loading history...</p>
+
+        <div
+          id="historyList"
+          class="history-list"
+        >
+
+          <p class="loading-text">
+            Loading history...
+          </p>
+
         </div>
+
       </section>
+
     </main>
+
   </div>
 
+
   <script src="js/dashboard.js"></script>
+
 </body>
 </html>
