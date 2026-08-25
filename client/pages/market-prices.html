@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Agriculture AI | Market Prices</title>
+
+  <!-- Dashboard common style -->
+  <link rel="stylesheet" href="../css/dashboard.css" />
+
+  <!-- Market page style -->
+  <link rel="stylesheet" href="../css/market-prices.css" />
+</head>
+
+<body>
+
+  <div class="app-layout">
+
+    <!-- ==============================
+         SIDEBAR
+    =============================== -->
+
+    <aside class="sidebar">
+
+      <a class="brand" href="../index.html">
+        <span class="brand-icon">🌿</span>
+        <span>Agriculture AI</span>
+      </a>
+
+      <p class="menu-label">MENU</p>
+
+      <nav class="nav-links">
+
+        <a class="nav-link" href="../index.html">
+          ⌂ Dashboard
+        </a>
+
+        <a class="nav-link" href="crop-recommendation.html">
+          🌱 Crop Recommendation
+        </a>
+
+        <a class="nav-link" href="fertilizer-advisor.html">
+          🧪 Fertilizer Advisor
+        </a>
+
+        <a class="nav-link" href="irrigation-advisor.html">
+          💧 Irrigation Advisor
+        </a>
+
+        <a class="nav-link" href="farm-history.html">
+          ◷ Farm History
+        </a>
+
+        <a class="nav-link" href="my-farm.html">
+          🚜 My Farm
+        </a>
+
+        <a class="nav-link" href="disease-detection.html">
+          🔎 Disease Advisor
+        </a>
+
+        <a class="nav-link" href="weather-advisor.html">
+          ☀ Weather Advisor
+        </a>
+
+        <a class="nav-link active" href="market-prices.html">
+          ₹ Market Prices
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-help">
+
+        <span>🧑‍🌾</span>
+
+        <div>
+          <strong>Smart farming</strong>
+
+          <p>
+            Simple tools for better crop decisions.
+          </p>
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ==============================
+         MAIN CONTENT
+    =============================== -->
+
+    <main class="main-content market-page">
+
+
+      <!-- ==============================
+           TOP BAR
+      =============================== -->
+
+      <header class="topbar">
+
+        <div>
+          <p class="eyebrow">MARKET INTELLIGENCE</p>
+
+          <h1>Market Prices</h1>
+
+          <p class="page-description">
+            Check crop prices and make better selling decisions.
+          </p>
+        </div>
+
+
+        <a class="profile-chip" href="my-farm.html">
+          My Farm 🌾
+        </a>
+
+      </header>
+
+
+      <!-- ==============================
+           HERO
+      =============================== -->
+
+      <section class="market-hero">
+
+        <div class="market-hero-content">
+
+          <div class="market-hero-badge">
+            LIVE MARKET GUIDE
+          </div>
+
+          <h2>
+            Know the market before you sell.
+          </h2>
+
+          <p>
+            Compare crop prices, nearby markets and price trends
+            from one simple dashboard.
+          </p>
+
+        </div>
+
+
+        <div class="market-hero-icon">
+          ₹
+        </div>
+
+      </section>
+
+
+      <!-- ==============================
+           MARKET STATS
+      =============================== -->
+
+      <section class="market-stat-grid">
+
+        <article class="market-stat-card">
+
+          <div class="market-stat-icon green-box">
+            🌾
+          </div>
+
+          <div>
+            <p>Tracked Crops</p>
+            <h3>8</h3>
+            <span>Popular crops</span>
+          </div>
+
+        </article>
+
+
+        <article class="market-stat-card">
+
+          <div class="market-stat-icon yellow-box">
+            ₹
+          </div>
+
+          <div>
+            <p>Best Price Today</p>
+            <h3>₹7,250</h3>
+            <span>Per quintal</span>
+          </div>
+
+        </article>
+
+
+        <article class="market-stat-card">
+
+          <div class="market-stat-icon blue-box">
+            📍
+          </div>
+
+          <div>
+            <p>Nearby Markets</p>
+            <h3>4</h3>
+            <span>Available markets</span>
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- ==============================
+           PRICE SEARCH PANEL
+      =============================== -->
+
+      <section class="market-panel">
+
+        <div class="market-panel-header">
+
+          <div>
+            <p class="eyebrow">
+              FIND MARKET PRICE
+            </p>
+
+            <h2>
+              Check today's crop rate
+            </h2>
+          </div>
+
+          <span class="market-status">
+            ● Demo prices
+          </span>
+
+        </div>
+
+
+        <div class="market-filter-grid">
+
+
+          <!-- CROP -->
+
+          <div class="market-field">
+
+            <label for="cropSelect">
+              Crop
+            </label>
+
+            <div class="input-wrapper">
+
+              <span>🌱</span>
+
+              <select id="cropSelect">
+                <option value="">Select crop</option>
+                <option>Wheat</option>
+                <option>Cotton</option>
+                <option>Groundnut</option>
+                <option>Maize</option>
+                <option>Soybean</option>
+                <option>Onion</option>
+                <option>Potato</option>
+                <option>Tomato</option>
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <!-- LOCATION -->
+
+          <div class="market-field">
+
+            <label for="marketSelect">
+              Market
+            </label>
+
+            <div class="input-wrapper">
+
+              <span>📍</span>
+
+              <select id="marketSelect">
+                <option value="">Select market</option>
+                <option>Amreli</option>
+                <option>Rajkot</option>
+                <option>Ahmedabad</option>
+                <option>Surat</option>
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <!-- BUTTON -->
+
+          <div class="market-field market-button-field">
+
+            <label>&nbsp;</label>
+
+            <button class="check-price-button" type="button">
+              Check Price →
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="market-note">
+
+          <span>💡</span>
+
+          <p>
+            Live government market data will be connected in the
+            next backend step. Current values are UI demo data.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==============================
+           PRICE LIST
+      =============================== -->
+
+      <section class="market-panel">
+
+        <div class="market-panel-header">
+
+          <div>
+            <p class="eyebrow">
+              TODAY'S MARKET
+            </p>
+
+            <h2>
+              Popular crop prices
+            </h2>
+          </div>
+
+          <button class="refresh-price-button">
+            ↻ Refresh
+          </button>
+
+        </div>
+
+
+        <!-- TABLE HEADER -->
+
+        <div class="price-table">
+
+
+          <div class="price-table-header">
+
+            <span>Crop</span>
+
+            <span>Market</span>
+
+            <span>Min Price</span>
+
+            <span>Max Price</span>
+
+            <span>Trend</span>
+
+          </div>
+
+
+          <!-- WHEAT -->
+
+          <div class="price-row">
+
+            <div class="crop-cell">
+
+              <div class="crop-avatar wheat-avatar">
+                🌾
+              </div>
+
+              <div>
+                <strong>Wheat</strong>
+                <p>Food grain</p>
+              </div>
+
+            </div>
+
+            <span class="market-location">
+              Amreli
+            </span>
+
+            <span class="price-value">
+              ₹2,350
+            </span>
+
+            <span class="price-value max-price">
+              ₹2,620
+            </span>
+
+            <span class="trend-up">
+              ↑ 4.2%
+            </span>
+
+          </div>
+
+
+          <!-- COTTON -->
+
+          <div class="price-row">
+
+            <div class="crop-cell">
+
+              <div class="crop-avatar cotton-avatar">
+                ☁
+              </div>
+
+              <div>
+                <strong>Cotton</strong>
+                <p>Cash crop</p>
+              </div>
+
+            </div>
+
+            <span class="market-location">
+              Rajkot
+            </span>
+
+            <span class="price-value">
+              ₹6,850
+            </span>
+
+            <span class="price-value max-price">
+              ₹7,250
+            </span>
+
+            <span class="trend-up">
+              ↑ 2.8%
+            </span>
+
+          </div>
+
+
+          <!-- GROUNDNUT -->
+
+          <div class="price-row">
+
+            <div class="crop-cell">
+
+              <div class="crop-avatar groundnut-avatar">
+                🥜
+              </div>
+
+              <div>
+                <strong>Groundnut</strong>
+                <p>Oilseed crop</p>
+              </div>
+
+            </div>
+
+            <span class="market-location">
+              Amreli
+            </span>
+
+            <span class="price-value">
+              ₹5,250
+            </span>
+
+            <span class="price-value max-price">
+              ₹5,680
+            </span>
+
+            <span class="trend-up">
+              ↑ 1.9%
+            </span>
+
+          </div>
+
+
+          <!-- MAIZE -->
+
+          <div class="price-row">
+
+            <div class="crop-cell">
+
+              <div class="crop-avatar maize-avatar">
+                🌽
+              </div>
+
+              <div>
+                <strong>Maize</strong>
+                <p>Food grain</p>
+              </div>
+
+            </div>
+
+            <span class="market-location">
+              Ahmedabad
+            </span>
+
+            <span class="price-value">
+              ₹1,950
+            </span>
+
+            <span class="price-value max-price">
+              ₹2,180
+            </span>
+
+            <span class="trend-down">
+              ↓ 1.1%
+            </span>
+
+          </div>
+
+
+          <!-- ONION -->
+
+          <div class="price-row">
+
+            <div class="crop-cell">
+
+              <div class="crop-avatar onion-avatar">
+                🧅
+              </div>
+
+              <div>
+                <strong>Onion</strong>
+                <p>Vegetable</p>
+              </div>
+
+            </div>
+
+            <span class="market-location">
+              Surat
+            </span>
+
+            <span class="price-value">
+              ₹1,580
+            </span>
+
+            <span class="price-value max-price">
+              ₹1,920
+            </span>
+
+            <span class="trend-up">
+              ↑ 5.6%
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ==============================
+           SELLING TIP
+      =============================== -->
+
+      <section class="selling-tip">
+
+        <div class="selling-tip-icon">
+          💡
+        </div>
+
+        <div>
+
+          <p class="eyebrow">
+            FARMER TIP
+          </p>
+
+          <h3>
+            Compare prices before choosing a market
+          </h3>
+
+          <p>
+            A nearby market may save transport cost, while another
+            market may provide a better selling price. Always compare
+            both before making your decision.
+          </p>
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
