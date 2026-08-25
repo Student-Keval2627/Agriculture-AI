@@ -3,11 +3,13 @@ from flask import Blueprint, jsonify, request
 
 from config import db
 from services.disease_service import get_disease_advice
+from utils.auth_utils import get_current_user_id, login_required
 
 disease_bp = Blueprint("disease_bp", __name__)
 
 
 @disease_bp.route("/api/disease/check", methods=["POST"])
+@login_required
 def check_disease():
     data = request.get_json(silent=True) or {}
 
@@ -23,6 +25,7 @@ def check_disease():
     diagnosis = get_disease_advice(crop, symptom)
 
     history_data = {
+        "userId": get_current_user_id(),
         "crop": crop,
         "symptom": symptom,
         "disease": diagnosis["disease"],
@@ -34,17 +37,24 @@ def check_disease():
 
     db.disease_history.insert_one(history_data.copy())
 
+    response_data = history_data.copy()
+    response_data.pop("userId")
+
     return jsonify({
         "success": True,
         "message": "Disease advice generated successfully",
-        "data": history_data
+        "data": response_data
     })
 
 
 @disease_bp.route("/api/disease/history", methods=["GET"])
+@login_required
 def disease_history():
     history = list(
-        db.disease_history.find({}, {"_id": 0})
+        db.disease_history.find(
+            {"userId": get_current_user_id()},
+            {"_id": 0, "userId": 0}
+        )
         .sort("createdAt", -1)
         .limit(10)
     )

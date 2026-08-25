@@ -1,3 +1,4 @@
+import json
 import os
 from datetime import timedelta
 
@@ -10,6 +11,8 @@ from routes.crop_routes import crop_bp
 from routes.disease_routes import disease_bp
 from routes.fertilizer_routes import fertilizer_bp
 from routes.irrigation_routes import irrigation_bp
+from utils.localization import localize_payload, normalize_language
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CLIENT_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "client"))
@@ -23,7 +26,7 @@ app = Flask(
 app.config["SECRET_KEY"] = SECRET_KEY
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=7)
 
-CORS(app)
+CORS(app, supports_credentials=True)
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(crop_bp)
@@ -39,16 +42,55 @@ def protect_frontend_pages():
     if path.startswith("/api/"):
         return None
 
-    if path in {"/login.html", "/register.html", "/"}:
+    if path in {"/", "/login.html", "/register.html"}:
         return None
 
-    if path.endswith((".css", ".js", ".png", ".jpg", ".jpeg", ".svg", ".ico", ".webp")):
+    if path.endswith((
+        ".css", ".js", ".png", ".jpg", ".jpeg",
+        ".svg", ".ico", ".webp"
+    )):
         return None
 
     if path.endswith(".html") and not session.get("user_id"):
         return redirect("/login.html")
 
     return None
+
+
+@app.after_request
+def translate_api_response(response):
+    """Translate every API JSON response using the selected language."""
+    if not request.path.startswith("/api/") or not response.is_json:
+        return response
+
+    language = normalize_language(
+        request.headers.get("X-App-Language")
+    )
+
+    if language == "en":
+        return response
+
+    try:
+        payload = response.get_json(silent=True)
+
+        if payload is not None:
+            translated_payload = localize_payload(payload, language)
+
+            response.set_data(
+                json.dumps(
+                    translated_payload,
+                    ensure_ascii=False
+                )
+            )
+
+            response.headers[
+                "Content-Type"
+            ] = "application/json; charset=utf-8"
+
+    except Exception:
+        pass
+
+    return response
 
 
 @app.route("/")
@@ -92,6 +134,7 @@ def database_status():
             "success": True,
             "message": "MongoDB connected successfully"
         })
+
     except Exception:
         return jsonify({
             "success": False,

@@ -24,7 +24,7 @@ cropForm.addEventListener("submit", async (event) => {
 
   try {
     const response = await fetch(
-      "http://127.0.0.1:5000/api/crop/recommend",
+      "/api/crop/recommend",
       {
         method: "POST",
         headers: {

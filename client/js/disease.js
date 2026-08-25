@@ -25,7 +25,7 @@ diseaseForm.addEventListener("submit", async (event) => {
   checkButton.textContent = "Checking crop condition...";
 
   try {
-    const response = await fetch("http://127.0.0.1:5000/api/disease/check", {
+    const response = await fetch("/api/disease/check", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -11,10 +11,10 @@ let allActivities = [];
 let selectedFilter = "all";
 
 const endpoints = {
-  crop: "http://127.0.0.1:5000/api/crop/history",
-  disease: "http://127.0.0.1:5000/api/disease/history",
-  fertilizer: "http://127.0.0.1:5000/api/fertilizer/history",
-  irrigation: "http://127.0.0.1:5000/api/irrigation/history"
+  crop: "/api/crop/history",
+  disease: "/api/disease/history",
+  fertilizer: "/api/fertilizer/history",
+  irrigation: "/api/irrigation/history"
 };
 
 function formatDate(dateValue) {

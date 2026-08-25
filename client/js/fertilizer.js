@@ -26,7 +26,7 @@ fertilizerForm.addEventListener("submit", async (event) => {
   adviceButton.textContent = "Getting field advice...";
 
   try {
-    const response = await fetch("http://127.0.0.1:5000/api/fertilizer/advice", {
+    const response = await fetch("/api/fertilizer/advice", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

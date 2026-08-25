@@ -3,11 +3,13 @@ from flask import Blueprint, jsonify, request
 
 from config import db
 from services.irrigation_service import get_irrigation_advice
+from utils.auth_utils import get_current_user_id, login_required
 
 irrigation_bp = Blueprint("irrigation_bp", __name__)
 
 
 @irrigation_bp.route("/api/irrigation/advice", methods=["POST"])
+@login_required
 def irrigation_advice():
     data = request.get_json(silent=True) or {}
 
@@ -24,6 +26,7 @@ def irrigation_advice():
     advice = get_irrigation_advice(crop, soil_type, moisture_level)
 
     history_data = {
+        "userId": get_current_user_id(),
         "crop": crop,
         "soilType": soil_type,
         "moistureLevel": moisture_level,
@@ -36,17 +39,24 @@ def irrigation_advice():
 
     db.irrigation_history.insert_one(history_data.copy())
 
+    response_data = history_data.copy()
+    response_data.pop("userId")
+
     return jsonify({
         "success": True,
         "message": "Irrigation advice generated successfully",
-        "data": history_data
+        "data": response_data
     })
 
 
 @irrigation_bp.route("/api/irrigation/history", methods=["GET"])
+@login_required
 def irrigation_history():
     history = list(
-        db.irrigation_history.find({}, {"_id": 0})
+        db.irrigation_history.find(
+            {"userId": get_current_user_id()},
+            {"_id": 0, "userId": 0}
+        )
         .sort("createdAt", -1)
         .limit(10)
     )
