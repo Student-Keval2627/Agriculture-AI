@@ -6,6 +6,7 @@ const refreshPriceButton = document.querySelector(".refresh-price-button");
 
 const priceTable = document.querySelector(".price-table");
 const marketStatus = document.querySelector(".market-status");
+console.log("Market Prices JS connected");
 
 
 const API_BASE =

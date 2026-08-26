@@ -1,89 +1,49 @@
+from datetime import datetime, timezone
+
 from flask import Blueprint, jsonify, request
 
+from config import db
+from utils.auth_utils import get_current_user_id, login_required
 
-market_bp = Blueprint("market", __name__)
+
+market_bp = Blueprint("market_bp", __name__)
 
 
-MARKET_PRICES = [
-    {
-        "crop": "Wheat",
-        "category": "Food grain",
-        "market": "Amreli",
-        "minPrice": 2350,
-        "maxPrice": 2620,
-        "trend": 4.2
-    },
-    {
-        "crop": "Cotton",
-        "category": "Cash crop",
-        "market": "Rajkot",
-        "minPrice": 6850,
-        "maxPrice": 7250,
-        "trend": 2.8
-    },
-    {
-        "crop": "Groundnut",
-        "category": "Oilseed crop",
-        "market": "Amreli",
-        "minPrice": 5250,
-        "maxPrice": 5680,
-        "trend": 1.9
-    },
-    {
-        "crop": "Maize",
-        "category": "Food grain",
-        "market": "Ahmedabad",
-        "minPrice": 1950,
-        "maxPrice": 2180,
-        "trend": -1.1
-    },
-    {
-        "crop": "Onion",
-        "category": "Vegetable",
-        "market": "Surat",
-        "minPrice": 1580,
-        "maxPrice": 1920,
-        "trend": 5.6
-    },
-    {
-        "crop": "Soybean",
-        "category": "Oilseed crop",
-        "market": "Rajkot",
-        "minPrice": 4250,
-        "maxPrice": 4680,
-        "trend": 1.4
-    },
-    {
-        "crop": "Potato",
-        "category": "Vegetable",
-        "market": "Ahmedabad",
-        "minPrice": 1250,
-        "maxPrice": 1540,
-        "trend": -0.8
-    },
-    {
-        "crop": "Tomato",
-        "category": "Vegetable",
-        "market": "Surat",
-        "minPrice": 1800,
-        "maxPrice": 2250,
-        "trend": 3.7
-    }
-]
-
+# =========================================================
+# GET ALL MARKET PRICES
+# =========================================================
 
 @market_bp.route("/api/market-prices", methods=["GET"])
+@login_required
 def get_market_prices():
+
+    prices = list(
+        db.market_prices.find(
+            {},
+            {
+                "_id": 0,
+                "cropKey": 0,
+                "marketKey": 0
+            }
+        ).sort("crop", 1)
+    )
+
     return jsonify({
         "success": True,
-        "count": len(MARKET_PRICES),
-        "prices": MARKET_PRICES,
-        "message": "Market price data loaded successfully"
+        "count": len(prices),
+        "prices": prices,
+        "message": "Market prices loaded successfully"
     })
 
 
+# =========================================================
+# CHECK SELECTED CROP + MARKET PRICE
+# =========================================================
+
 @market_bp.route("/api/market-prices", methods=["POST"])
+@login_required
 def find_market_price():
+
     data = request.get_json(silent=True) or {}
 
     crop = str(data.get("crop", "")).strip()
@@ -101,15 +61,20 @@ def find_market_price():
             "message": "Please select a market"
         }), 400
 
-    result = next(
-        (
-            item
-            for item in MARKET_PRICES
-            if item["crop"].lower() == crop.lower()
-            and item["market"].lower() == market.lower()
-        ),
-        None
+
+    # Search market price from MongoDB
+    result = db.market_prices.find_one(
+        {
+            "cropKey": crop.lower(),
+            "marketKey": market.lower()
+        },
+        {
+            "_id": 0,
+            "cropKey": 0,
+            "marketKey": 0
+        }
     )
+
 
     if result is None:
         return jsonify({
@@ -117,8 +82,58 @@ def find_market_price():
             "message": f"No market price found for {crop} in {market}"
         }), 404
 
+
+    # Save farmer search history
+    history_data = {
+        "userId": get_current_user_id(),
+        "crop": result["crop"],
+        "market": result["market"],
+        "minPrice": result["minPrice"],
+        "maxPrice": result["maxPrice"],
+        "trend": result.get("trend", 0),
+        "createdAt": datetime.now(timezone.utc).isoformat()
+    }
+
+
+    db.market_search_history.insert_one(
+        history_data.copy()
+    )
+
+
     return jsonify({
         "success": True,
         "price": result,
         "message": "Market price found successfully"
+    })
+
+
+# =========================================================
+# MARKET PRICE SEARCH HISTORY
+# =========================================================
+
+@market_bp.route(
+    "/api/market-prices/history",
+    methods=["GET"]
+)
+@login_required
+def market_price_history():
+
+    history = list(
+        db.market_search_history.find(
+            {
+                "userId": get_current_user_id()
+            },
+            {
+                "_id": 0,
+                "userId": 0
+            }
+        )
+        .sort("createdAt", -1)
+        .limit(10)
+    )
+
+
+    return jsonify({
+        "success": True,
+        "data": history
     })
