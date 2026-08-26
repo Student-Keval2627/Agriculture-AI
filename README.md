@@ -6,6 +6,15 @@ The system provides crop recommendations, fertilizer guidance, irrigation advice
 
 ---
 
+## 🌐 Live Project
+
+🚀 **[Open Agriculture AI Live](https://agriculture-ai-nsel.onrender.com)**
+
+> The project is deployed using Render and MongoDB Atlas.  
+> Since it uses Render's free instance, the first load may take a few seconds after inactivity.
+
+---
+
 ## 🌾 Project Overview
 
 Agriculture AI focuses on providing a simple and easy-to-use farming assistant.
@@ -137,6 +146,11 @@ Dashboard includes:
 
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
+### Deployment
+
+![Render](https://img.shields.io/badge/Render-000000?style=for-the-badge&logo=render&logoColor=white)
+![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+
 ### Development Tools
 
 ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
@@ -144,6 +158,7 @@ Dashboard includes:
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ---
+
 ## 📸 Project Screenshots
 
 ### Dashboard
@@ -169,6 +184,86 @@ Dashboard includes:
 ### Login
 
 ![Login Page](screenshots/login.png)
+
+---
+
+## 🔄 System Architecture
+
+```mermaid
+flowchart TB
+
+    USER["👨‍🌾 Farmer"]
+
+    LOGIN["🔐 Login / Register"]
+    DASHBOARD["🏠 Agriculture AI Dashboard"]
+
+    subgraph TOOLS["🌿 Smart Farming Tools"]
+        CROP["🌱 Crop Recommendation"]
+        FERTILIZER["🧪 Fertilizer Advisor"]
+        IRRIGATION["💧 Irrigation Advisor"]
+        DISEASE["🔎 Disease Advisor"]
+        WEATHER["☀️ Weather Advisor"]
+        MARKET["₹ Market Prices"]
+        FARM["🚜 My Farm"]
+        HISTORY["◷ Farm History"]
+    end
+
+    subgraph FRONTEND["🖥️ Frontend"]
+        HTML["HTML"]
+        CSS["CSS"]
+        JS["JavaScript"]
+    end
+
+    subgraph SERVER["⚙️ Flask Backend"]
+        AUTH["🔐 Authentication API"]
+        FARMAPI["🌱 Agriculture APIs"]
+        HISTORYAPI["📜 History APIs"]
+    end
+
+    subgraph DATABASE["🍃 MongoDB Atlas"]
+        USERS[("👤 Users")]
+        PROFILE[("🚜 Farm Profiles")]
+        ACTIVITIES[("📜 Activity History")]
+        PRICES[("₹ Market Prices")]
+    end
+
+    subgraph CLOUD["☁️ Cloud Deployment"]
+        RENDER["🚀 Render Web Service"]
+    end
+
+    USER --> LOGIN
+    LOGIN --> DASHBOARD
+
+    DASHBOARD --> CROP
+    DASHBOARD --> FERTILIZER
+    DASHBOARD --> IRRIGATION
+    DASHBOARD --> DISEASE
+    DASHBOARD --> WEATHER
+    DASHBOARD --> MARKET
+    DASHBOARD --> FARM
+    DASHBOARD --> HISTORY
+
+    TOOLS --> FRONTEND
+
+    FRONTEND --> AUTH
+    FRONTEND --> FARMAPI
+    FRONTEND --> HISTORYAPI
+
+    AUTH --> USERS
+
+    FARMAPI --> PROFILE
+    FARMAPI --> ACTIVITIES
+    FARMAPI --> PRICES
+
+    HISTORYAPI --> ACTIVITIES
+
+    RENDER --> FRONTEND
+    RENDER --> SERVER
+
+    SERVER --> DATABASE
+```
+
+---
 
 ## 📂 Project Structure
 
@@ -232,4 +327,378 @@ AgricultureAI/
 │       ├── auth_utils.py
 │       └── localization.py
 │
+├── screenshots/
+│   ├── dashboard.png
+│   ├── crop-recommendation.png
+│   ├── weather-advisor.png
+│   ├── market-prices.png
+│   ├── farm-history.png
+│   └── login.png
+│
+├── .gitignore
 └── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Student-Keval2627/agriculture-ai.git
+cd agriculture-ai
+```
+
+---
+
+### 2. Create Python Virtual Environment
+
+```bash
+cd server
+python -m venv venv
+```
+
+Activate it on Windows:
+
+```bash
+.\venv\Scripts\activate
+```
+
+---
+
+### 3. Install Required Packages
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🍃 MongoDB Setup
+
+The project uses MongoDB for storing farmer information and application activity.
+
+For local development:
+
+```text
+mongodb://127.0.0.1:27017/
+```
+
+For the live project, MongoDB Atlas is used as the cloud database.
+
+The application uses MongoDB to store:
+
+```text
+Users
+Crop History
+Disease History
+Fertilizer History
+Irrigation History
+Weather History
+Market Prices
+Market Search History
+Farm Profiles
+```
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file inside the `server` folder.
+
+```env
+MONGO_URI=your_mongodb_connection_string
+DATABASE_NAME=agriculture_ai
+SECRET_KEY=your_secret_key
+```
+
+> Never upload your real `.env` file or database password to GitHub.
+
+---
+
+## ₹ Add Initial Market Price Data
+
+Run the market price seed script once:
+
+```bash
+cd server
+.\venv\Scripts\python.exe .\seed_market_prices.py
+```
+
+Expected output:
+
+```text
+Market prices added successfully.
+Total records: 8
+```
+
+---
+
+## ▶️ Run the Application Locally
+
+Start the Flask backend:
+
+```bash
+cd server
+.\venv\Scripts\python.exe .\app.py
+```
+
+The application will run at:
+
+```text
+http://127.0.0.1:5000
+```
+
+Open this URL in your browser.
+
+---
+
+## ☁️ Live Deployment
+
+Agriculture AI is deployed online using:
+
+```text
+Frontend + Flask Backend → Render
+Database                 → MongoDB Atlas
+Repository               → GitHub
+```
+
+Live application:
+
+**https://agriculture-ai-nsel.onrender.com**
+
+The Render free instance may spin down after inactivity, so the first request may take a few seconds to start.
+
+---
+
+## 🔐 Authentication Flow
+
+```mermaid
+flowchart LR
+
+    A["👨‍🌾 Farmer"] --> B["📝 Register"]
+    B --> C["🔐 Login"]
+    C --> D["🍪 Session Created"]
+    D --> E["🏠 Dashboard"]
+    E --> F["🌿 Agriculture Tools"]
+    F --> G["🍃 MongoDB Atlas"]
+    E --> H["🚪 Logout"]
+    H --> C
+```
+
+Protected pages automatically redirect unauthorized users to the login page.
+
+---
+
+## 🔌 Main API Routes
+
+### Authentication
+
+```text
+POST /api/auth/register
+POST /api/auth/login
+GET  /api/auth/me
+POST /api/auth/logout
+```
+
+### Crop Recommendation
+
+```text
+POST /api/crop/recommend
+GET  /api/crop/history
+```
+
+### Disease Advisor
+
+```text
+POST /api/disease/check
+GET  /api/disease/history
+```
+
+### Fertilizer Advisor
+
+```text
+POST /api/fertilizer/advice
+GET  /api/fertilizer/history
+```
+
+### Irrigation Advisor
+
+```text
+POST /api/irrigation/advice
+GET  /api/irrigation/history
+```
+
+### Weather Advisor
+
+```text
+POST /api/weather/advice
+GET  /api/weather/history
+```
+
+### Market Prices
+
+```text
+GET  /api/market-prices
+POST /api/market-prices
+GET  /api/market-prices/history
+```
+
+### Farm Profile
+
+```text
+GET /api/farm/profile
+PUT /api/farm/profile
+```
+
+### System
+
+```text
+GET /api/health
+GET /api/database-status
+```
+
+---
+
+## 🗃️ Farm History System
+
+Farm History combines saved activity from the main Agriculture AI tools.
+
+```mermaid
+flowchart LR
+
+    CROP["🌱 Crop"]
+    DISEASE["🔎 Disease"]
+    FERTILIZER["🧪 Fertilizer"]
+    IRRIGATION["💧 Irrigation"]
+    WEATHER["☀️ Weather"]
+    MARKET["₹ Market"]
+
+    HISTORY["📜 Farm History"]
+
+    CROP --> HISTORY
+    DISEASE --> HISTORY
+    FERTILIZER --> HISTORY
+    IRRIGATION --> HISTORY
+    WEATHER --> HISTORY
+    MARKET --> HISTORY
+
+    HISTORY --> DB[("🍃 MongoDB Atlas")]
+```
+
+The records are filtered using the logged-in user's ID.
+
+---
+
+## 🎯 Project Goals
+
+Agriculture AI aims to:
+
+- Make digital farming tools easier to use
+- Keep farming information in one place
+- Help farmers make better crop decisions
+- Provide simple farming recommendations
+- Maintain farmer activity history
+- Build a scalable foundation for future AI agriculture features
+
+---
+
+## 🚀 Future Improvements
+
+Possible future features:
+
+- 🌍 Real-time weather integration
+- 📈 Live mandi market prices
+- 📸 Image-based crop disease detection
+- 🤖 Machine learning crop prediction
+- 🌧️ Rainfall prediction
+- 🌱 Soil nutrient analysis
+- 📍 Location-based farming recommendations
+- 📊 Farm analytics dashboard
+- 🔔 Farmer alerts and notifications
+- 🎤 Voice input for farmers
+- 🌐 Gujarati and Hindi language support
+- 📱 Mobile application
+
+---
+
+## 🔒 Security
+
+The application includes:
+
+- Session-based login
+- Protected frontend pages
+- User-specific MongoDB records
+- Authentication-required API routes
+- Logout session clearing
+- Environment variable based configuration
+- MongoDB Atlas IP access control
+
+---
+
+## 📌 Current Status
+
+```text
+✅ Authentication
+✅ Dashboard
+✅ Crop Recommendation
+✅ Fertilizer Advisor
+✅ Irrigation Advisor
+✅ Disease Advisor
+✅ Weather Advisor
+✅ Market Prices
+✅ My Farm
+✅ Farm History
+✅ MongoDB Atlas Integration
+✅ User-specific History
+✅ Global Logout
+✅ Responsive UI
+✅ Render Deployment
+✅ Public Live URL
+```
+
+---
+
+## 🔗 Important Links
+
+🌐 **Live Project:**  
+https://agriculture-ai-nsel.onrender.com
+
+💻 **GitHub Repository:**  
+https://github.com/Student-Keval2627/agriculture-ai
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions and improvements are welcome.
+
+You can:
+
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Commit your changes
+5. Push the branch
+6. Create a Pull Request
+
+---
+
+## 📄 License
+
+This project is created for educational and learning purposes.
+
+---
+
+<div align="center">
+
+### 🌿 Agriculture AI
+
+**Smart Farming • Simple Decisions • Better Agriculture**
+
+🚀 **[View Live Project](https://agriculture-ai-nsel.onrender.com)**
+
+Made with ❤️ using Python, Flask, MongoDB Atlas, HTML, CSS and JavaScript.
+
+</div>
