@@ -596,31 +596,8 @@
 
 
   <script src="js/dashboard.js"></script>
-  <script src="js/dashboard.js"></script>
 
-<script>
-  const logoutButton = document.getElementById("logoutButton");
-
-  logoutButton.addEventListener("click", async () => {
-    try {
-      const response = await fetch("/api/auth/logout", {
-        method: "POST",
-        credentials: "include"
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        window.location.href = "/login.html";
-      } else {
-        alert(data.message || "Logout failed.");
-      }
-    } catch (error) {
-      console.error("Logout error:", error);
-      alert("Could not logout.");
-    }
-  });
-</script>
+  <script src="js/app-controls.js"></script>
 
 </body>
 
