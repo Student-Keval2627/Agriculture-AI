@@ -1003,3 +1003,27 @@ body {
   }
 
 }
+.logout-button {
+  margin-top: 18px;
+  padding: 13px 12px;
+
+  width: 100%;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+  color: #d2e7d8;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  text-align: left;
+
+  transition: 0.2s;
+}
+
+.logout-button:hover {
+  background: #8f2f2f;
+  color: white;
+}

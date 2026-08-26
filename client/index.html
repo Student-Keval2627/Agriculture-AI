@@ -66,7 +66,9 @@
         </a>
 
       </nav>
-
+      <button id="logoutButton" class="logout-button" type="button">
+        🚪 Logout
+      </button>
 
       <div class="sidebar-help">
 
@@ -116,10 +118,7 @@
         </div>
 
 
-        <a
-          class="profile-chip"
-          href="pages/my-farm.html"
-        >
+        <a class="profile-chip" href="pages/my-farm.html">
           🚜 My Farm
         </a>
 
@@ -151,18 +150,12 @@
 
           <div class="hero-actions">
 
-            <a
-              class="primary-button"
-              href="pages/crop-recommendation.html"
-            >
+            <a class="primary-button" href="pages/crop-recommendation.html">
               🌱 Recommend a crop
             </a>
 
 
-            <a
-              class="secondary-button"
-              href="pages/farm-history.html"
-            >
+            <a class="secondary-button" href="pages/farm-history.html">
               View farm history →
             </a>
 
@@ -319,10 +312,7 @@
           </div>
 
 
-          <div
-            id="latestContent"
-            class="latest-content"
-          >
+          <div id="latestContent" class="latest-content">
 
             <p class="loading-text">
               Loading your latest farm data...
@@ -360,10 +350,7 @@
           </p>
 
 
-          <a
-            class="farm-overview-button"
-            href="pages/my-farm.html"
-          >
+          <a class="farm-overview-button" href="pages/my-farm.html">
             Open My Farm →
           </a>
 
@@ -404,10 +391,7 @@
 
           <!-- CROP -->
 
-          <a
-            class="tool-card crop-tool"
-            href="pages/crop-recommendation.html"
-          >
+          <a class="tool-card crop-tool" href="pages/crop-recommendation.html">
 
             <span class="tool-icon">
               🌱
@@ -432,10 +416,7 @@
 
           <!-- FERTILIZER -->
 
-          <a
-            class="tool-card fertilizer-tool"
-            href="pages/fertilizer-advisor.html"
-          >
+          <a class="tool-card fertilizer-tool" href="pages/fertilizer-advisor.html">
 
             <span class="tool-icon">
               🧪
@@ -460,10 +441,7 @@
 
           <!-- IRRIGATION -->
 
-          <a
-            class="tool-card irrigation-tool"
-            href="pages/irrigation-advisor.html"
-          >
+          <a class="tool-card irrigation-tool" href="pages/irrigation-advisor.html">
 
             <span class="tool-icon">
               💧
@@ -488,10 +466,7 @@
 
           <!-- DISEASE -->
 
-          <a
-            class="tool-card disease-tool"
-            href="pages/disease-detection.html"
-          >
+          <a class="tool-card disease-tool" href="pages/disease-detection.html">
 
             <span class="tool-icon">
               🔎
@@ -516,10 +491,7 @@
 
           <!-- WEATHER -->
 
-          <a
-            class="tool-card weather-tool"
-            href="pages/weather-advisor.html"
-          >
+          <a class="tool-card weather-tool" href="pages/weather-advisor.html">
 
             <span class="tool-icon">
               ☀️
@@ -544,10 +516,7 @@
 
           <!-- MARKET -->
 
-          <a
-            class="tool-card market-tool"
-            href="pages/market-prices.html"
-          >
+          <a class="tool-card market-tool" href="pages/market-prices.html">
 
             <span class="tool-icon">
               ₹
@@ -578,10 +547,7 @@
            RECENT HISTORY
       ====================================== -->
 
-      <section
-        id="history"
-        class="panel history-panel dashboard-history"
-      >
+      <section id="history" class="panel history-panel dashboard-history">
 
         <div class="panel-heading">
 
@@ -604,10 +570,7 @@
               View all history
             </a>
 
-            <button
-              id="refreshButton"
-              type="button"
-            >
+            <button id="refreshButton" type="button">
               ↻ Refresh
             </button>
 
@@ -616,10 +579,7 @@
         </div>
 
 
-        <div
-          id="historyList"
-          class="history-list"
-        >
+        <div id="historyList" class="history-list">
 
           <p class="loading-text">
             Loading history...
@@ -634,7 +594,33 @@
   </div>
 
 
+
   <script src="js/dashboard.js"></script>
+  <script src="js/dashboard.js"></script>
+
+<script>
+  const logoutButton = document.getElementById("logoutButton");
+
+  logoutButton.addEventListener("click", async () => {
+    try {
+      const response = await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "include"
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        window.location.href = "/login.html";
+      } else {
+        alert(data.message || "Logout failed.");
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+      alert("Could not logout.");
+    }
+  });
+</script>
 
 </body>
 
