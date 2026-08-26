@@ -144,6 +144,31 @@ Dashboard includes:
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ---
+## 📸 Project Screenshots
+
+### Dashboard
+
+![Agriculture AI Dashboard](screenshots/dashboard.png)
+
+### Crop Recommendation
+
+![Crop Recommendation](screenshots/crop-recommendation.png)
+
+### Weather Advisor
+
+![Weather Advisor](screenshots/weather-advisor.png)
+
+### Market Prices
+
+![Market Prices](screenshots/market-prices.png)
+
+### Farm History
+
+![Farm History](screenshots/farm-history.png)
+
+### Login
+
+![Login Page](screenshots/login.png)
 
 ## 📂 Project Structure
 
