@@ -48,14 +48,12 @@
 
       <!-- CROP -->
       <article class="stat-card">
-
-        <span>🌱</span>
+        <span>☀️</span>
 
         <div>
-          <p>Crop Plans</p>
-          <h2 id="cropCount">0</h2>
+          <p>Weather Checks</p>
+          <h2 id="weatherCount">0</h2>
         </div>
-
       </article>
 
 
@@ -133,10 +131,7 @@
         </div>
 
 
-        <button
-          id="refreshButton"
-          type="button"
-        >
+        <button id="refreshButton" type="button">
           ↻ Refresh
         </button>
 
@@ -148,51 +143,36 @@
       ========================== -->
       <div class="filter-row">
 
-        <button
-          class="filter-button active"
-          data-filter="all"
-        >
+        <button class="filter-button active" data-filter="all">
           All
         </button>
 
 
-        <button
-          class="filter-button"
-          data-filter="crop"
-        >
+        <button class="filter-button" data-filter="crop">
           🌱 Crop
         </button>
 
 
-        <button
-          class="filter-button"
-          data-filter="disease"
-        >
+        <button class="filter-button" data-filter="disease">
           🔎 Disease
         </button>
 
 
-        <button
-          class="filter-button"
-          data-filter="fertilizer"
-        >
+        <button class="filter-button" data-filter="fertilizer">
           🧪 Fertilizer
         </button>
 
 
-        <button
-          class="filter-button"
-          data-filter="irrigation"
-        >
+        <button class="filter-button" data-filter="irrigation">
           💧 Irrigation
         </button>
 
 
-        <button
-          class="filter-button"
-          data-filter="market"
-        >
+        <button class="filter-button" data-filter="market">
           ₹ Market
+        </button>
+        <button class="filter-button" data-filter="weather">
+          ☀️ Weather
         </button>
 
       </div>
@@ -201,10 +181,7 @@
       <!-- =========================
            ACTIVITY LIST
       ========================== -->
-      <div
-        id="activityList"
-        class="activity-list"
-      >
+      <div id="activityList" class="activity-list">
 
         <p class="loading-text">
           Loading your farm history...

@@ -6,7 +6,11 @@ from config import db
 from utils.auth_utils import get_current_user_id, login_required
 
 
-weather_bp = Blueprint("weather", __name__, url_prefix="/api/weather")
+weather_bp = Blueprint(
+    "weather",
+    __name__,
+    url_prefix="/api/weather"
+)
 
 
 WEATHER_GUIDANCE = {
@@ -19,6 +23,7 @@ WEATHER_GUIDANCE = {
             "Check young plants for heat stress."
         ]
     },
+
     "Cloudy": {
         "title": "Cloudy field guidance",
         "priority": "Low",
@@ -28,6 +33,7 @@ WEATHER_GUIDANCE = {
             "Use the cooler weather for field inspection."
         ]
     },
+
     "Rainy": {
         "title": "Rainy field guidance",
         "priority": "High",
@@ -37,6 +43,7 @@ WEATHER_GUIDANCE = {
             "Delay fertilizer or pesticide application during heavy rain."
         ]
     },
+
     "Windy": {
         "title": "Windy field guidance",
         "priority": "Medium",
@@ -49,28 +56,58 @@ WEATHER_GUIDANCE = {
 }
 
 
+# =========================================================
+# WEATHER ADVICE
+# =========================================================
+
 @weather_bp.route("/advice", methods=["POST"])
 @login_required
 def get_weather_advice():
+
     user_id = get_current_user_id()
+
     data = request.get_json(silent=True) or {}
 
-    weather = str(data.get("weather", "")).strip()
-    rain_expected = str(data.get("rainExpected", "")).strip()
+    weather = str(
+        data.get("weather", "")
+    ).strip()
 
-    if weather not in WEATHER_GUIDANCE or rain_expected not in ["Yes", "No"]:
+    rain_expected = str(
+        data.get("rainExpected", "")
+    ).strip()
+
+
+    if (
+        weather not in WEATHER_GUIDANCE
+        or rain_expected not in ["Yes", "No"]
+    ):
+
         return jsonify({
             "success": False,
-            "message": "Please select weather condition and rain expectation."
+            "message":
+                "Please select weather condition and rain expectation."
         }), 400
 
+
     guidance = WEATHER_GUIDANCE[weather]
-    advice = list(guidance["advice"])
+
+    advice = list(
+        guidance["advice"]
+    )
+
 
     if rain_expected == "Yes":
-        advice.append("Keep irrigation low and inspect drainage before rain starts.")
+
+        advice.append(
+            "Keep irrigation low and inspect drainage before rain starts."
+        )
+
     else:
-        advice.append("Plan irrigation according to your crop and current soil moisture.")
+
+        advice.append(
+            "Plan irrigation according to your crop and current soil moisture."
+        )
+
 
     result = {
         "userId": user_id,
@@ -79,16 +116,60 @@ def get_weather_advice():
         "title": guidance["title"],
         "priority": guidance["priority"],
         "advice": advice,
-        "createdAt": datetime.now(timezone.utc).isoformat()
+        "createdAt": datetime.now(
+            timezone.utc
+        ).isoformat()
     }
 
-    db.weather_history.insert_one(result)
+
+    db.weather_history.insert_one(
+        result.copy()
+    )
+
 
     response_data = result.copy()
-    response_data.pop("_id", None)
-    response_data.pop("userId", None)
+
+    response_data.pop(
+        "_id",
+        None
+    )
+
+    response_data.pop(
+        "userId",
+        None
+    )
+
 
     return jsonify({
         "success": True,
         "data": response_data
+    })
+
+
+# =========================================================
+# WEATHER HISTORY
+# =========================================================
+
+@weather_bp.route("/history", methods=["GET"])
+@login_required
+def weather_history():
+
+    history = list(
+        db.weather_history.find(
+            {
+                "userId": get_current_user_id()
+            },
+            {
+                "_id": 0,
+                "userId": 0
+            }
+        )
+        .sort("createdAt", -1)
+        .limit(10)
+    )
+
+
+    return jsonify({
+        "success": True,
+        "data": history
     })

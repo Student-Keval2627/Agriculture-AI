@@ -1,7 +1,7 @@
 const activityList = document.getElementById("activityList");
 const refreshButton = document.getElementById("refreshButton");
 const filterButtons = document.querySelectorAll(".filter-button");
-
+const weatherCount = document.getElementById("weatherCount");
 const cropCount = document.getElementById("cropCount");
 const diseaseCount = document.getElementById("diseaseCount");
 const fertilizerCount = document.getElementById("fertilizerCount");
@@ -17,7 +17,8 @@ const endpoints = {
   disease: "/api/disease/history",
   fertilizer: "/api/fertilizer/history",
   irrigation: "/api/irrigation/history",
-  market: "/api/market-prices/history"
+  market: "/api/market-prices/history",
+  weather: "/api/weather/history"
 };
 
 
@@ -54,15 +55,24 @@ function getActivityDetails(type, item) {
       icon: "🌱",
 
       title:
-        `Suggested crops: ${
-          Array.isArray(item.recommendedCrops)
-            ? item.recommendedCrops.join(", ")
-            : "Crop recommendation"
+        `Suggested crops: ${Array.isArray(item.recommendedCrops)
+          ? item.recommendedCrops.join(", ")
+          : "Crop recommendation"
         }`,
 
       description:
         `${item.soilType || "Unknown"} soil · ` +
         `${item.season || "Unknown"} season`
+    };
+  }
+  if (type === "weather") {
+    return {
+      icon: "☀️",
+      title: item.title || `${item.weather} weather guidance`,
+      description:
+        `${item.weather || "Unknown"} · ` +
+        `Rain expected: ${item.rainExpected || "Unknown"} · ` +
+        `${item.priority || "Unknown"} priority`
     };
   }
 
@@ -137,8 +147,7 @@ function getActivityDetails(type, item) {
       icon: "₹",
 
       title:
-        `${item.crop || "Crop"} price checked in ${
-          item.market || "Market"
+        `${item.crop || "Crop"} price checked in ${item.market || "Market"
         }`,
 
       description:
@@ -162,9 +171,9 @@ function renderActivities() {
     selectedFilter === "all"
       ? allActivities
       : allActivities.filter(
-          (activity) =>
-            activity.type === selectedFilter
-        );
+        (activity) =>
+          activity.type === selectedFilter
+      );
 
 
   activityList.innerHTML = "";
@@ -431,6 +440,9 @@ async function loadHistory() {
     if (marketCount) {
       marketCount.textContent =
         counts.market || 0;
+    }
+    if (weatherCount) {
+      weatherCount.textContent = counts.weather || 0;
     }
 
 
