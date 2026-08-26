@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Agriculture AI | Farmer Dashboard</title>
+
   <link rel="stylesheet" href="css/dashboard.css" />
 </head>
 
@@ -12,9 +14,10 @@
 
   <div class="app-layout">
 
-    <!-- =========================
+    <!-- =====================================
          SIDEBAR
-    ========================== -->
+    ====================================== -->
+
     <aside class="sidebar">
 
       <a class="brand" href="index.html">
@@ -64,13 +67,17 @@
 
       </nav>
 
+
       <div class="sidebar-help">
 
         <span>🧑‍🌾</span>
 
         <div>
           <strong>Smart farming</strong>
-          <p>Simple tools for better crop decisions.</p>
+
+          <p>
+            Simple tools for better crop decisions.
+          </p>
         </div>
 
       </div>
@@ -78,77 +85,150 @@
     </aside>
 
 
-    <!-- =========================
+    <!-- =====================================
          MAIN CONTENT
-    ========================== -->
+    ====================================== -->
+
     <main class="main-content">
 
-      <!-- TOP BAR -->
+
+      <!-- =====================================
+           TOP BAR
+      ====================================== -->
+
       <header class="topbar">
 
         <div>
-          <p class="eyebrow">FARMER DASHBOARD</p>
-          <h1>Welcome back, Farmer</h1>
+
+          <p class="eyebrow">
+            FARMER DASHBOARD
+          </p>
+
+          <h1>
+            Welcome back, Farmer
+          </h1>
+
+          <p class="dashboard-subtitle">
+            Your farm tools, recommendations and recent activity
+            in one simple place.
+          </p>
+
         </div>
 
-        <a class="profile-chip" href="pages/my-farm.html">
-          My Farm 🌾
+
+        <a
+          class="profile-chip"
+          href="pages/my-farm.html"
+        >
+          🚜 My Farm
         </a>
 
       </header>
 
 
-      <!-- =========================
-           HERO SECTION
-      ========================== -->
-      <section class="hero-card">
+      <!-- =====================================
+           HERO
+      ====================================== -->
+
+      <section class="hero-card dashboard-hero">
 
         <div class="hero-content">
 
-          <p class="eyebrow light">
-            AGRICULTURE AI ASSISTANT
-          </p>
+          <div class="hero-badge">
+            🌿 SMART FARMING ASSISTANT
+          </div>
 
           <h2>
-            Plan your next crop with confidence.
+            Make better farming decisions every day.
           </h2>
 
           <p>
-            Get crop suggestions based on your soil type
-            and farming season.
+            Get crop recommendations, irrigation guidance,
+            fertilizer advice, weather support and market prices
+            from one Agriculture AI dashboard.
           </p>
 
-          <a class="primary-button" href="pages/crop-recommendation.html">
-            Get crop recommendation →
-          </a>
+
+          <div class="hero-actions">
+
+            <a
+              class="primary-button"
+              href="pages/crop-recommendation.html"
+            >
+              🌱 Recommend a crop
+            </a>
+
+
+            <a
+              class="secondary-button"
+              href="pages/farm-history.html"
+            >
+              View farm history →
+            </a>
+
+          </div>
 
         </div>
 
-        <div class="hero-icon">
-          🌱
+
+        <div class="hero-visual">
+
+          <div class="hero-main-icon">
+            🌾
+          </div>
+
+          <span class="hero-mini-icon icon-one">
+            ☀️
+          </span>
+
+          <span class="hero-mini-icon icon-two">
+            💧
+          </span>
+
+          <span class="hero-mini-icon icon-three">
+            🌱
+          </span>
+
         </div>
 
       </section>
 
 
-      <!-- =========================
-           DASHBOARD STATS
-      ========================== -->
-      <section class="stat-grid">
+      <!-- =====================================
+           FARM SUMMARY
+      ====================================== -->
+
+      <section class="stat-grid dashboard-stats">
+
+
+        <!-- SAVED PLANS -->
 
         <article class="stat-card">
 
           <span class="stat-icon green">
-            🌾
+            📋
           </span>
 
           <div>
-            <p>Saved Recommendations</p>
-            <h3 id="historyCount">0</h3>
+
+            <p>
+              Saved Crop Plans
+            </p>
+
+            <h3 id="historyCount">
+              0
+            </h3>
+
+            <small>
+              MongoDB records
+            </small>
+
           </div>
 
         </article>
 
+
+        <!-- LATEST CROP -->
 
         <article class="stat-card">
 
@@ -157,12 +237,25 @@
           </span>
 
           <div>
-            <p>Latest Suggested Crop</p>
-            <h3 id="latestCrop">Loading...</h3>
+
+            <p>
+              Latest Suggested Crop
+            </p>
+
+            <h3 id="latestCrop">
+              Loading...
+            </h3>
+
+            <small>
+              Latest recommendation
+            </small>
+
           </div>
 
         </article>
 
+
+        <!-- LAST UPDATED -->
 
         <article class="stat-card">
 
@@ -171,8 +264,19 @@
           </span>
 
           <div>
-            <p>Last Updated</p>
-            <h3 id="latestDate">Loading...</h3>
+
+            <p>
+              Last Recommendation
+            </p>
+
+            <h3 id="latestDate">
+              Loading...
+            </h3>
+
+            <small>
+              Recent activity
+            </small>
+
           </div>
 
         </article>
@@ -180,13 +284,17 @@
       </section>
 
 
-      <!-- =========================
-           DASHBOARD CONTENT
-      ========================== -->
-      <section class="dashboard-grid">
+      <!-- =====================================
+           MAIN DASHBOARD AREA
+      ====================================== -->
+
+      <section class="dashboard-grid dashboard-main-grid">
 
 
-        <!-- LATEST RESULT -->
+        <!-- =====================================
+             LATEST RESULT
+        ====================================== -->
+
         <article class="panel latest-panel">
 
           <div class="panel-heading">
@@ -194,23 +302,27 @@
             <div>
 
               <p class="eyebrow">
-                LATEST RESULT
+                LATEST CROP PLAN
               </p>
 
               <h2>
-                Your crop recommendation
+                Your latest recommendation
               </h2>
 
             </div>
 
+
             <a href="pages/crop-recommendation.html">
-              New recommendation
+              New recommendation →
             </a>
 
           </div>
 
 
-          <div id="latestContent" class="latest-content">
+          <div
+            id="latestContent"
+            class="latest-content"
+          >
 
             <p class="loading-text">
               Loading your latest farm data...
@@ -221,83 +333,38 @@
         </article>
 
 
-        <!-- =========================
-             QUICK ACTIONS
-        ========================== -->
-        <article class="panel quick-panel">
+        <!-- =====================================
+             FARM ACTIVITY
+        ====================================== -->
+
+        <article class="panel farm-overview-panel">
 
           <p class="eyebrow">
-            QUICK ACTIONS
+            YOUR FARM
           </p>
 
           <h2>
-            What would you like to do?
+            Keep your farm information updated
           </h2>
 
 
-          <!-- CROP RECOMMENDATION -->
-          <a class="quick-action" href="pages/crop-recommendation.html">
-
-            <span>🌱</span>
-
-            <div>
-
-              <strong>
-                Recommend a crop
-              </strong>
-
-              <p>
-                Choose a crop using soil and season.
-              </p>
-
-            </div>
-
-            <b>→</b>
-
-          </a>
+          <div class="farm-overview-icon">
+            🚜
+          </div>
 
 
-          <!-- WEATHER ADVISOR -->
-          <a class="quick-action" href="pages/weather-advisor.html">
-
-            <span>☀️</span>
-
-            <div>
-
-              <strong>
-                Check weather
-              </strong>
-
-              <p>
-                Get weather-based farming advice.
-              </p>
-
-            </div>
-
-            <b>→</b>
-
-          </a>
+          <p class="farm-overview-text">
+            Save your farm details to make Agriculture AI
+            easier to use and keep your farming information
+            together.
+          </p>
 
 
-          <!-- DISEASE ADVISOR -->
-          <a class="quick-action" href="pages/disease-detection.html">
-
-            <span>🔎</span>
-
-            <div>
-
-              <strong>
-                Detect crop disease
-              </strong>
-
-              <p>
-                Check crop health and disease symptoms.
-              </p>
-
-            </div>
-
-            <b>→</b>
-
+          <a
+            class="farm-overview-button"
+            href="pages/my-farm.html"
+          >
+            Open My Farm →
           </a>
 
         </article>
@@ -305,17 +372,223 @@
       </section>
 
 
-      <!-- =========================
+      <!-- =====================================
+           FARM TOOLS
+      ====================================== -->
+
+      <section class="panel tools-panel">
+
+        <div class="tools-heading">
+
+          <div>
+
+            <p class="eyebrow">
+              FARM TOOLS
+            </p>
+
+            <h2>
+              What would you like to do?
+            </h2>
+
+            <p>
+              Choose a farming tool to get started.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="tool-grid">
+
+
+          <!-- CROP -->
+
+          <a
+            class="tool-card crop-tool"
+            href="pages/crop-recommendation.html"
+          >
+
+            <span class="tool-icon">
+              🌱
+            </span>
+
+            <div>
+
+              <strong>
+                Crop Recommendation
+              </strong>
+
+              <p>
+                Find suitable crops using soil and season.
+              </p>
+
+            </div>
+
+            <b>→</b>
+
+          </a>
+
+
+          <!-- FERTILIZER -->
+
+          <a
+            class="tool-card fertilizer-tool"
+            href="pages/fertilizer-advisor.html"
+          >
+
+            <span class="tool-icon">
+              🧪
+            </span>
+
+            <div>
+
+              <strong>
+                Fertilizer Advisor
+              </strong>
+
+              <p>
+                Get fertilizer guidance for your crop.
+              </p>
+
+            </div>
+
+            <b>→</b>
+
+          </a>
+
+
+          <!-- IRRIGATION -->
+
+          <a
+            class="tool-card irrigation-tool"
+            href="pages/irrigation-advisor.html"
+          >
+
+            <span class="tool-icon">
+              💧
+            </span>
+
+            <div>
+
+              <strong>
+                Irrigation Advisor
+              </strong>
+
+              <p>
+                Check when your crop may need water.
+              </p>
+
+            </div>
+
+            <b>→</b>
+
+          </a>
+
+
+          <!-- DISEASE -->
+
+          <a
+            class="tool-card disease-tool"
+            href="pages/disease-detection.html"
+          >
+
+            <span class="tool-icon">
+              🔎
+            </span>
+
+            <div>
+
+              <strong>
+                Disease Advisor
+              </strong>
+
+              <p>
+                Check crop symptoms and possible risks.
+              </p>
+
+            </div>
+
+            <b>→</b>
+
+          </a>
+
+
+          <!-- WEATHER -->
+
+          <a
+            class="tool-card weather-tool"
+            href="pages/weather-advisor.html"
+          >
+
+            <span class="tool-icon">
+              ☀️
+            </span>
+
+            <div>
+
+              <strong>
+                Weather Advisor
+              </strong>
+
+              <p>
+                Get weather-based farming guidance.
+              </p>
+
+            </div>
+
+            <b>→</b>
+
+          </a>
+
+
+          <!-- MARKET -->
+
+          <a
+            class="tool-card market-tool"
+            href="pages/market-prices.html"
+          >
+
+            <span class="tool-icon">
+              ₹
+            </span>
+
+            <div>
+
+              <strong>
+                Market Prices
+              </strong>
+
+              <p>
+                Compare crop prices before selling.
+              </p>
+
+            </div>
+
+            <b>→</b>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
            RECENT HISTORY
-      ========================== -->
-      <section id="history" class="panel history-panel">
+      ====================================== -->
+
+      <section
+        id="history"
+        class="panel history-panel dashboard-history"
+      >
 
         <div class="panel-heading">
 
           <div>
 
             <p class="eyebrow">
-              MONGODB DATA
+              RECENT ACTIVITY
             </p>
 
             <h2>
@@ -324,14 +597,29 @@
 
           </div>
 
-          <button id="refreshButton" type="button">
-            ↻ Refresh
-          </button>
+
+          <div class="history-actions">
+
+            <a href="pages/farm-history.html">
+              View all history
+            </a>
+
+            <button
+              id="refreshButton"
+              type="button"
+            >
+              ↻ Refresh
+            </button>
+
+          </div>
 
         </div>
 
 
-        <div id="historyList" class="history-list">
+        <div
+          id="historyList"
+          class="history-list"
+        >
 
           <p class="loading-text">
             Loading history...

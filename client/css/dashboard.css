@@ -512,3 +512,494 @@ body {
     text-align: left;
   }
 }
+/* ==========================================
+   FINAL DASHBOARD POLISH
+========================================== */
+
+.dashboard-subtitle {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* ==========================================
+   HERO
+========================================== */
+
+.dashboard-hero {
+  min-height: 275px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: 16px;
+  padding: 7px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  color: #c8e9d0;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 24px;
+}
+
+.hero-actions .primary-button {
+  margin-top: 0;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 13px 17px;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 9px;
+
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  transition: 0.2s ease;
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* ==========================================
+   HERO VISUAL
+========================================== */
+
+.hero-visual {
+  position: relative;
+
+  width: 190px;
+  height: 180px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+}
+
+.hero-main-icon {
+  width: 135px;
+  height: 135px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  font-size: 62px;
+}
+
+.hero-mini-icon {
+  position: absolute;
+
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  font-size: 17px;
+}
+
+.icon-one {
+  right: 6px;
+  top: 15px;
+}
+
+.icon-two {
+  right: 0;
+  bottom: 23px;
+}
+
+.icon-three {
+  left: 3px;
+  bottom: 12px;
+}
+
+
+/* ==========================================
+   STAT CARDS
+========================================== */
+
+.dashboard-stats .stat-card {
+  min-height: 105px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dashboard-stats .stat-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 32px rgba(22, 61, 35, 0.075);
+}
+
+.stat-card small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #92a297;
+
+  font-size: 10px;
+}
+
+
+/* ==========================================
+   MAIN GRID
+========================================== */
+
+.dashboard-main-grid {
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(280px, 0.65fr);
+}
+
+
+/* ==========================================
+   FARM OVERVIEW
+========================================== */
+
+.farm-overview-panel {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100%;
+}
+
+.farm-overview-panel h2 {
+  max-width: 280px;
+
+  font-size: 20px;
+
+  line-height: 1.35;
+}
+
+.farm-overview-icon {
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 23px 0 17px;
+
+  border-radius: 16px;
+
+  background: #e9f6eb;
+
+  font-size: 28px;
+}
+
+.farm-overview-text {
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.65;
+}
+
+.farm-overview-button {
+  display: inline-flex;
+
+  width: fit-content;
+
+  margin-top: auto;
+  padding-top: 22px;
+
+  color: #24733d;
+
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* ==========================================
+   FARM TOOLS PANEL
+========================================== */
+
+.tools-panel {
+  margin-top: 24px;
+}
+
+.tools-heading h2 {
+  margin-bottom: 6px;
+
+  font-size: 21px;
+}
+
+.tools-heading > div > p:last-child {
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+
+/* ==========================================
+   TOOL GRID
+========================================== */
+
+.tool-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 13px;
+
+  margin-top: 22px;
+}
+
+
+/* ==========================================
+   TOOL CARD
+========================================== */
+
+.tool-card {
+  position: relative;
+
+  min-height: 130px;
+
+  padding: 17px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  overflow: hidden;
+
+  border: 1px solid #e1ebe2;
+  border-radius: 14px;
+
+  background: #fcfefc;
+
+  color: var(--text);
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #c8ddcc;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 9px 25px rgba(20, 61, 34, 0.07);
+}
+
+.tool-card > div {
+  min-width: 0;
+}
+
+.tool-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: #e9f6eb;
+
+  font-size: 19px;
+}
+
+.tool-card strong {
+  display: block;
+
+  margin: 3px 0 7px;
+
+  font-size: 13px;
+}
+
+.tool-card p {
+  color: var(--muted);
+
+  font-size: 11px;
+
+  line-height: 1.55;
+}
+
+.tool-card b {
+  position: absolute;
+
+  right: 15px;
+  bottom: 13px;
+
+  color: #438557;
+
+  font-size: 14px;
+}
+
+
+/* ==========================================
+   TOOL COLORS
+========================================== */
+
+.crop-tool .tool-icon {
+  background: #e6f5e9;
+}
+
+.fertilizer-tool .tool-icon {
+  background: #f1ebff;
+}
+
+.irrigation-tool .tool-icon {
+  background: #e5f2ff;
+}
+
+.disease-tool .tool-icon {
+  background: #fff0ec;
+}
+
+.weather-tool .tool-icon {
+  background: #fff6d9;
+}
+
+.market-tool .tool-icon {
+  background: #fff3d6;
+
+  color: #956300;
+
+  font-weight: 800;
+}
+
+
+/* ==========================================
+   HISTORY
+========================================== */
+
+.dashboard-history {
+  margin-top: 24px;
+}
+
+.history-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.history-actions a {
+  color: #24733d;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 1100px) {
+
+  .tool-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 980px) {
+
+  .dashboard-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 760px) {
+
+  .hero-visual {
+    display: none;
+  }
+
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card {
+    min-height: 105px;
+  }
+
+}
+
+
+@media (max-width: 680px) {
+
+  .dashboard-subtitle {
+    display: none;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions a {
+    width: fit-content;
+  }
+
+  .history-actions {
+    align-items: flex-end;
+    flex-direction: column;
+  }
+
+}
