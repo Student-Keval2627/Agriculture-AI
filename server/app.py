@@ -13,7 +13,7 @@ from routes.fertilizer_routes import fertilizer_bp
 from routes.irrigation_routes import irrigation_bp
 from utils.localization import localize_payload, normalize_language
 from routes.market_routes import market_bp
-
+from routes.market_routes import market_bp
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CLIENT_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "client"))
@@ -35,6 +35,7 @@ app.register_blueprint(disease_bp)
 app.register_blueprint(fertilizer_bp)
 app.register_blueprint(irrigation_bp)
 app.register_blueprint(farm_bp)
+app.register_blueprint(market_bp)
 
 
 

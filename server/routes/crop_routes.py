@@ -1,9 +1,11 @@
 from datetime import datetime, timezone
+
 from flask import Blueprint, jsonify, request
 
 from config import db
 from services.crop_service import get_crop_recommendation
 from utils.auth_utils import get_current_user_id, login_required
+
 
 crop_bp = Blueprint("crop_bp", __name__)
 
@@ -22,7 +24,10 @@ def recommend_crop():
             "message": "Soil type and season are required"
         }), 400
 
-    recommendation = get_crop_recommendation(soil_type, season)
+    recommendation = get_crop_recommendation(
+        soil_type,
+        season
+    )
 
     history_data = {
         "userId": get_current_user_id(),
@@ -30,13 +35,21 @@ def recommend_crop():
         "season": season,
         "recommendedCrops": recommendation["crops"],
         "reason": recommendation["reason"],
-        "createdAt": datetime.now(timezone.utc).isoformat()
+        "createdAt": datetime.now(
+            timezone.utc
+        ).isoformat()
     }
 
-    db.crop_history.insert_one(history_data.copy())
+    db.crop_history.insert_one(
+        history_data.copy()
+    )
 
     response_data = history_data.copy()
-    response_data.pop("userId")
+
+    response_data.pop(
+        "userId",
+        None
+    )
 
     return jsonify({
         "success": True,
@@ -48,10 +61,16 @@ def recommend_crop():
 @crop_bp.route("/api/crop/history", methods=["GET"])
 @login_required
 def crop_history():
+
     history = list(
         db.crop_history.find(
-            {"userId": get_current_user_id()},
-            {"_id": 0, "userId": 0}
+            {
+                "userId": get_current_user_id()
+            },
+            {
+                "_id": 0,
+                "userId": 0
+            }
         )
         .sort("createdAt", -1)
         .limit(10)
