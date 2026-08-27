@@ -9,11 +9,7 @@ const marketStatus = document.querySelector(".market-status");
 console.log("Market Prices JS connected");
 
 
-const API_BASE =
-  window.location.port === "5000"
-    ? ""
-    : "http://127.0.0.1:5000";
-
+const API_BASE = "";
 
 const cropIcons = {
   Wheat: "🌾",
